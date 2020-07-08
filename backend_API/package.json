@@ -1,0 +1,19 @@
+{
+  "name": "backend_api",
+  "version": "1.0.0",
+  "description": "Captsone Group Assignment",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon -r esm app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Marcel Cornett, Gordon Mathurin, Greg Spurgeon, Andre Miller",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.22",
+    "nodemon": "^2.0.4"
+  }
+}
