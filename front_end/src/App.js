@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
 import { Navigation } from "./components/navigation"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // TODO: ADD REDUX STORE
 
