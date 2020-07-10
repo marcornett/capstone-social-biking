@@ -6,7 +6,6 @@ import React from "react"
 
 export const HomeSignedOut = () => (
     <div className="home">
-        <h1>HomeSignedOut</h1>
         {/* <Navbar /> */}
     </div>
 )
