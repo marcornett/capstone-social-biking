@@ -1,9 +1,10 @@
 import React from 'react'
 import { Card, Button } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 import './EventList.css'
 
 export const EventList = () => {
-
+    const { groupName } = useParams()
     return (
         <Card>
             <Card.Header as="h5">Events</Card.Header>
