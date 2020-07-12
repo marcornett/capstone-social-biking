@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import Image from 'react-bootstrap/Image'
+import Container from 'react-bootstrap/Container'
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
 import "./ProfileIcon.css";
 
 
@@ -18,9 +22,7 @@ const SetProfileIcon = ({
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
         setIcon(photo);
-
         console.log(photo);
     };
 
@@ -60,7 +62,23 @@ const SetProfileIcon = ({
                     Click on the Profile link in the menu to view your uploaded photo{" "}
                 </p>
             </form>
+
+            <Container>
+                <Row>
+                    <Col xs={6} md={4}>
+                        <Image src="holder.js/171x180" rounded />
+                    </Col>
+                    <Col xs={6} md={4}>
+                        <Image src="holder.js/171x180" roundedCircle />
+                    </Col>
+                    <Col xs={6} md={4}>
+                        <Image src="holder.js/171x180" thumbnail />
+                    </Col>
+                </Row>
+            </Container>
         </div>
+
+
     );
 };
 
