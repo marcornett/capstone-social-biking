@@ -1,12 +1,11 @@
 import React from "react"
-// ADD components to this screen and others depending on register or not
+import { GroupGrid } from '../components/group-grid'
 
 // Example
 // import {Navbar} from "../components" 
 
 export const HomeSignedIn = () => (
     <div className="home">
-        <h1>HomeSignedIn</h1>
-        {/* <Navbar /> */}
+        <GroupGrid />
     </div>
 )
