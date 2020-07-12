@@ -5,5 +5,6 @@ import './Home.css'
 export const HomeSignedOut = () => (
     <div className="home">
         <GroupGrid />
+        
     </div>
 )

@@ -1,0 +1,9 @@
+.groupBanner{
+display:flex;
+justify-content:space-around
+}
+
+
+.card {
+  max-width: 500px;
+}
