@@ -1,0 +1,32 @@
+#groupContent {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+#groupContent h5 {
+  margin-left: 20px;
+  margin-bottom: -5px;
+}
+
+#grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex-basis: 30%;
+  margin-right: 20px;
+}
+
+.column img {
+  width: 100%;
+  margin-top: 20px;
+  border-radius: 4px;
+  border: gray 1px solid;
+}
+
+@media screen and (max-width: 800px) {
+  .column {
+    flex-basis: 80%;
+  }
+}

@@ -1,12 +1,11 @@
 import React from "react"
-// ADD components to this screen and others depending on register or not
+import { EventList } from '../components/event-list'
 
 // Example
 // import {Navbar} from "../components" 
 
 export const GroupPage = () => (
     <div className="group">
-        <h1>Group Page</h1>
-        {/* <Navbar /> */}
+        <EventList />
     </div>
 )
