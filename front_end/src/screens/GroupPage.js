@@ -10,5 +10,6 @@ export const GroupPage = () => (
     <NavigationBar />
     <GroupBanner />
     <EventList />
+    <FooterPage/>
   </div>
 );
