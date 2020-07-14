@@ -1,9 +1,58 @@
 .groupBanner{
-display:flex;
-justify-content:space-around
+  padding:50px ;
+  margin: 20px auto;
+  display:flex;
+  justify-content:space-around;
+  background-size: 100%;
+  width: 80%;
+  
+  /* border: 1px #d4d4d4 solid; */
+  
+  
 }
 
 
 .card {
+  
+  display: flex;
   max-width: 500px;
+  
+}
+
+.rounded{
+ width: 100%;
+ padding: 0;
+
+ 
+}
+.button{
+  width: 100%;
+  
+}
+button.button{
+  background: #EF4347;
+  border-color: #29CB31;
+  
+}
+.button.btn:hover{
+  background: #29CB31;
+}
+
+.col{
+  display: flex;
+  
+  width: 80%;
+  margin: auto;
+  
+  
+}
+img.img-fluid{
+  width:527px;
+  height: 400px;
+  padding:0px 0 0px 0;
+}
+div.col{padding: 0;}
+
+div.col-md{
+  padding: 0;
 }
