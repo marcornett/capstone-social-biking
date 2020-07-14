@@ -12,6 +12,7 @@ export const NavigationBar = () => {
     <Navbar className="nav-bar"  expand="lg">
        <Col xs={6} md={4}>
       <Image src={cyclelogo2} alt="logo" roundedCircle />
+      <h4 className="brand">Life Cycle</h4>
     </Col>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
