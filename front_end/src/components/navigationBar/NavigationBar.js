@@ -1,13 +1,13 @@
-// Potential export similar navigation setup from Kwitter
 import React from 'react';
-import { Form, Col, Image, Nav,Navbar, FormControl } from 'react-bootstrap';
-// import * as ReactBootstrap from "react-bootstrap"
- import cyclelogo2 from "../assets/cyclelogo2.png" 
+import { Form, Col, Image, Nav, Navbar } from 'react-bootstrap';
+import cyclelogo2 from "../assets/cyclelogo2.png"
+import { SignIn } from '../sign-in'
+import { Register } from '../register'
 import './NavigationBar.css';
 
 
 export const NavigationBar = () => {
-  return(
+  return (
     <React.Fragment>
     <Navbar className="nav-bar"  expand="lg">
        <Col xs={6} md={4}>

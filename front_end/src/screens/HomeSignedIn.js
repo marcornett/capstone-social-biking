@@ -1,13 +1,13 @@
 import React from "react"
 import { GroupGrid } from '../components/group-grid'
 
-import {NavigationBar} from "../components/navigationBar"
+import { NavigationBar } from "../components/navigationBar"
 
 
 
 export const HomeSignedIn = () => (
     <div className="home">
-        <NavigationBar/>
+        <NavigationBar />
         <GroupGrid />
         <FooterPage/>
     </div>

@@ -7,7 +7,7 @@ import { NavigationBar } from '../components/navigationBar';
 
 export const GroupPage = () => (
   <div className='group'>
-  <NavigationBar/>
+    <NavigationBar />
     <GroupBanner />
     <EventList />
     <FooterPage/>
