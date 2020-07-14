@@ -1,0 +1,29 @@
+
+
+.nav-bar{
+  background-color: #FC3F4A; 
+  
+}
+
+.nav-links{
+  
+  color: #fff;
+  
+}
+.nav-links:hover{
+  color: #FBCE2F;
+  
+
+}
+
+button.navbar-toggler{
+  background: #FBCE2F;
+  
+}
+nav{
+  padding: 200px
+}
+nav.navbar-light{
+ padding: 0 80px 0 50px;
+ 
+}
