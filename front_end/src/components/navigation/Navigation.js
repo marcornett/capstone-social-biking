@@ -1,6 +1,6 @@
 import React from 'react'
 import { HomeSignedOut, NotFound, GroupPage, HomeSignedIn } from "../../screens"
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 export const Navigation = () => {
     return (
