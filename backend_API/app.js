@@ -2,6 +2,7 @@ import express, { response } from 'express'
 import { Schema } from 'mongoose'
 import { connectDB } from './database/connect'
 import user from './routes/users'
+import group from './routes/groups'
 
 // Start App
 const app = express()
@@ -16,7 +17,10 @@ app.use(express.urlencoded({ extended: false }))
 
 // routes
 user(app)
-app.use('/user', user)
+app.use('/users', user)
+
+group(app)
+app.use('/groups', group)
 
 app.get('/', (req, res) => {
     res.send('Capstone Backend')
