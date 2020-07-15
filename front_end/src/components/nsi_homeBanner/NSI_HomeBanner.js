@@ -1,25 +1,28 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card'
 import './NSI_HomeBanner.css'
 
 export const NSI_HomeBanner = () => {
     return (
         <div>
-            <CardGroup>
-                <Card>
-                    <Card.Img variant="top" src="holder.js/80px400" />
-                    <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                            This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.
-                    </Card.Text>
-                    </Card.Body>
-                    <Card.Footer>
-                        <small className="text-muted">Last updated 3 mins ago</small>
-                    </Card.Footer>
-                </Card>
-            </CardGroup>
+            <div class="float-container">
+
+                <div class="float-child">
+                    <div class="green"><h1>Join biking groups <br></br> in you area</h1>
+                    </div>
+                    <hr />
+                    <br />
+                    <div>
+                        <button><h4>Join</h4></button>
+                    </div>
+                </div>
+
+                <div class="float-child">
+                    <div class="blue">
+                        <img src="https://picsum.photos/171/180" alt="profileImage" />
+                    </div>
+                </div>
+
+            </div>
 
         </div>
 
