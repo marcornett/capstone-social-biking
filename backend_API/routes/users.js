@@ -9,13 +9,14 @@ export default (app) => {
             username,
             password,
             email,
+            image
         } = req.body
-        console.log(req.body)
 
         const user = new UserModel({
             username,
             password,
-            email
+            email,
+            image
         })
         try {
             await user.save()
