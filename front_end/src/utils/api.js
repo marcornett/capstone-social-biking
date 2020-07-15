@@ -63,7 +63,7 @@ class API {
           }
       }
 
-      getUserImage() {
+      getUser() {
         try {
          fetch.get('url here')
             .then(response=>response.json())
