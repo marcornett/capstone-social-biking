@@ -1,11 +1,15 @@
 import mongoose from 'mongoose'
-import { Schema } from 'mongoose'
+import { Schema, model } from 'mongoose'
 
 const userSchema = Schema({
     username: String,
     password: String,
     email: String,
-    groups: [String]
+    groups: [String],
+    image: {
+        data: Buffer,
+        contentType: String
+    }
 })
 
-export const UserModel = mongoose.model('User', userSchema)
+export const UserModel = model('User', userSchema)
