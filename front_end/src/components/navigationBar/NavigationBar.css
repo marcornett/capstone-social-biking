@@ -2,7 +2,7 @@
 
 .nav-bar{
   background-color: #FC3F4A; 
-  border-bottom: #8C8C8C solid .01rem;
+  border-bottom: #cccccc solid .01rem;
   
 }
 
@@ -33,4 +33,10 @@ nav.navbar-light{
 }
 .col-md-4{
 text-align: left;
+}
+a.nav-links{
+  padding-top: 60px;
+}
+img.rounded-circle{
+  margin-top: 15px;
 }
