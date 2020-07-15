@@ -2,7 +2,6 @@
 
 .nav-bar{
   background-color: #FC3F4A; 
-  border-bottom: #8C8C8C solid .01rem;
   
 }
 
@@ -16,9 +15,6 @@
   
 
 }
-.brand{
-  color: #FBCE2F;
-}
 
 button.navbar-toggler{
   background: #FBCE2F;
@@ -30,7 +26,4 @@ nav{
 nav.navbar-light{
  padding: 0 80px 0 50px;
  
-}
-.col-md-4{
-text-align: left;
 }
