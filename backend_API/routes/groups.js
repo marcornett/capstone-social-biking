@@ -36,6 +36,7 @@ export default (app) => {
             groupName,
             location,
             image,
+            about,
             eventList
         } = req.body
 
@@ -43,6 +44,7 @@ export default (app) => {
             groupName,
             location,
             image,
+            about,
             eventList
         })
 
