@@ -70,8 +70,8 @@ const SetProfileIcon = ({
 
         <Container>
             <Row>
-                <Col xs={4} md={2}>
-                    <Image src="https://picsum.photos/171/180" roundedCircle />
+                <Col xs={3} md={2}>
+                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
                 </Col>
             </Row>
         </Container>

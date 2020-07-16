@@ -11,4 +11,12 @@
 
 button.btn.btn-link {
   color: white;
+  border: none;
+  outline: none;
 }
+button.btn:hover{
+outline: none;
+border: none;
+font-weight: bolder;
+}
+
