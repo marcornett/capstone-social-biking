@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Col, Image, Nav, Navbar } from 'react-bootstrap';
 import cyclelogo2 from "../assets/cyclelogo2.png"
 import { SignIn } from '../sign-in'
 import { Register } from '../register'
 import './NavigationBar.css';
+import { useLocation } from "../../utils/index"
 
 
 export const NavigationBar = () => {
+  /*******************************************************/
+  //geolocation is placed here for will be changed
+  const locationCheck = useLocation()
+
+  useEffect(() => {
+    if (!locationCheck) return
+  }, [locationCheck])
+  /*******************************************************/
   return (
     <React.Fragment>
       <Navbar className="nav-bar" expand="lg">

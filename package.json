@@ -1,0 +1,23 @@
+{
+  "name": "capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "start": "node backend_API/index.js",
+    "build": "cd backend_API && npm install && cd ../front_end && npm install && npm run build && mv ./build ../backend_API/public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/gordonmathurin/capstone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/gordonmathurin/capstone/issues"
+  },
+  "homepage": "https://gitlab.com/gordonmathurin/capstone#readme"
+}
