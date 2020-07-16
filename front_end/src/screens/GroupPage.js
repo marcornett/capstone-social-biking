@@ -2,14 +2,14 @@ import React from 'react';
 import { EventList } from '../components/event-list';
 import { GroupBanner } from '../components/group-banner';
 import { NavigationBar } from '../components/navigationBar';
-import FooterPage from "../components/footer/Footer"
+import { FooterPage } from "../components/footer"
 
 
 export const GroupPage = () => (
   <div className='group'>
-  <NavigationBar/>
+    <NavigationBar />
     <GroupBanner />
     <EventList />
-    <FooterPage/>
+    <FooterPage />
   </div>
 );
