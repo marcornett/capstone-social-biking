@@ -5,8 +5,9 @@ import user from './routes/users'
 import group from './routes/groups'
 
 // Start App
-const app = express()
-const port = 3000
+const port = process.env.PORT || 5000
+const CURRENT_SERVER_DIRECTORY = path.resolve(path.dirname("."))
+const STATIC_DIRECTORY = path.resolve(CURRENT_SERVER_DIRECTORY, "backend_API", "public")
 
 // Connect to DB
 connectDB()
