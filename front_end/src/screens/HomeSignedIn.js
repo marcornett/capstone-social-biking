@@ -7,6 +7,6 @@ export const HomeSignedIn = () => (
     <div className="home">
         <NavigationBar />
         <GroupGrid />
-        <FooterPage />
+        <FooterPage/>
     </div>
 )

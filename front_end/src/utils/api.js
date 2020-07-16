@@ -31,9 +31,9 @@ class API {
         }
     }
 
-    UploadUserImage() {
-        try {
-            fetch('url here + user id', {
+      UploadUserImage(){
+          try{
+            fetch(`url here ${username}`, {
                 method: 'PUT',
                 body: JSON.stringify(),
                 headers: {
@@ -49,9 +49,9 @@ class API {
         }
     }
 
-    deleteUser() {
-        try {
-            fetch('url here + user id', {
+      deleteUser(){
+          try{
+            fetch(`url here :${username}`, {
                 method: 'DELETE',
             })
                 .then(response => response.json())
@@ -63,7 +63,7 @@ class API {
         }
     }
 
-    getUserImage() {
+      getUser() {
         try {
             fetch.get('url here')
                 .then(response => response.json())
@@ -73,7 +73,21 @@ class API {
         } catch (err) {
             return err;
         }
-    }
+      }
+
+    
+
+
+}
+
+
+
+
+
+
+
+
+
 
 
 }
