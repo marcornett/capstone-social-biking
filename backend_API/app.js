@@ -16,10 +16,7 @@ connectDB()
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(express.static(path.join(__dirname, 'build')))
-
-// ???
-app.get('/*',)
+app.use(express.static(STATIC_DIRECTORY))
 
 // routes
 user(app)
