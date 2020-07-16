@@ -3,6 +3,7 @@ import { Form, Col, Image, Nav, Navbar } from 'react-bootstrap';
 import cyclelogo2 from "../assets/cyclelogo2.png"
 import { SignIn } from '../sign-in'
 import { Register } from '../register'
+import SetProfileIcon from '../profile-Icon/ProfileIcon'
 import './NavigationBar.css';
 import { useLocation } from "../../utils/index"
 
@@ -16,6 +17,7 @@ export const NavigationBar = () => {
     if (!locationCheck) return
   }, [locationCheck])
   /*******************************************************/
+
   return (
     <React.Fragment>
       <Navbar className="nav-bar" expand="lg">
@@ -31,6 +33,8 @@ export const NavigationBar = () => {
             <Nav.Link className="nav-links" href="/">Home</Nav.Link>
             <SignIn />
             <Register />
+            <SetProfileIcon />
+
           </Form>
         </Navbar.Collapse>
       </Navbar>
