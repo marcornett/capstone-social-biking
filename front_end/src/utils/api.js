@@ -1,7 +1,7 @@
 
 
 class API {
-     login() {
+    login() {
         try {
             fetch('url here', {
                 method: 'POST',
@@ -11,28 +11,28 @@ class API {
                 }
             })
                 .then(response => response.json())
-                .then(response =>{
+                .then(response => {
                     //do something with respnose
-                }) 
+                })
         } catch (err) {
             return err;
         }
-      }
+    }
 
-       logout() {
+    logout() {
         try {
-         fetch.get('url here')
-            .then(response=>response.json())
-            .then(response => {
-                //do something with response
-            })
+            fetch.get('url here')
+                .then(response => response.json())
+                .then(response => {
+                    //do something with response
+                })
         } catch (err) {
             return err;
         }
-      }
+    }
 
-      UploadUserImage(){
-          try{
+    UploadUserImage() {
+        try {
             fetch('url here + user id', {
                 method: 'PUT',
                 body: JSON.stringify(),
@@ -41,64 +41,41 @@ class API {
                 }
             })
                 .then(response => response.json())
-                .then(response =>{
+                .then(response => {
                     //do something with response
-                }) 
-          }catch(err){
-              return err
-          }
-      }
+                })
+        } catch (err) {
+            return err
+        }
+    }
 
-      deleteUser(){
-          try{
+    deleteUser() {
+        try {
             fetch('url here + user id', {
                 method: 'DELETE',
             })
                 .then(response => response.json())
-                .then(response =>{
+                .then(response => {
                     //do something with response, "Are you sure you want to delete? alert message"
-                }) 
-          }catch(err){
-              return err
-          }
-      }
+                })
+        } catch (err) {
+            return err
+        }
+    }
 
-      getUserImage() {
+    getUserImage() {
         try {
-         fetch.get('url here')
-            .then(response=>response.json())
-            .then(response => {
-                //do something with response
-            })
+            fetch.get('url here')
+                .then(response => response.json())
+                .then(response => {
+                    //do something with response
+                })
         } catch (err) {
             return err;
         }
-      }
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-//SETUP API 
-/************************GEOLOCATION SETUP*******************************/
-try {
-    if ('geolocation' in navigator) {
-        console.log("geolocation available")
-        navigator.geolocation.getCurrentPosition((position) => {
-            console.log(position)
-        });
     }
-} catch (err) {
-    console.log("geolocation not available", err)
+
+
 }
 
 export default new API();
