@@ -5,6 +5,7 @@ import user from './routes/users'
 import group from './routes/groups'
 
 // Start App
+// const port = 4000
 const port = process.env.PORT || 5000
 const CURRENT_SERVER_DIRECTORY = path.resolve(path.dirname("."))
 const STATIC_DIRECTORY = path.resolve(CURRENT_SERVER_DIRECTORY, "backend_API", "public")
@@ -15,6 +16,10 @@ connectDB()
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'build')))
+
+// ???
+app.get('/*',)
 
 // routes
 user(app)
