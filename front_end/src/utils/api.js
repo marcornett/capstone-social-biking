@@ -33,7 +33,7 @@ class API {
 
       UploadUserImage(){
           try{
-            fetch('url here + user id', {
+            fetch(`url here ${username}`, {
                 method: 'PUT',
                 body: JSON.stringify(),
                 headers: {
@@ -51,7 +51,7 @@ class API {
 
       deleteUser(){
           try{
-            fetch('url here + user id', {
+            fetch(`url here :${username}`, {
                 method: 'DELETE',
             })
                 .then(response => response.json())
@@ -75,6 +75,7 @@ class API {
         }
       }
 
+    
 
 
 }
