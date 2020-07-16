@@ -12,7 +12,7 @@ class API {
             })
                 .then(response => response.json())
                 .then(response => {
-                    //do something with respnose
+                    //do something with response
                 })
         } catch (err) {
             return err;
@@ -31,8 +31,8 @@ class API {
         }
     }
 
-      UploadUserImage(){
-          try{
+    UploadUserImage(username) {
+        try {
             fetch(`url here ${username}`, {
                 method: 'PUT',
                 body: JSON.stringify(),
@@ -49,8 +49,8 @@ class API {
         }
     }
 
-      deleteUser(){
-          try{
+    deleteUser(username) {
+        try {
             fetch(`url here :${username}`, {
                 method: 'DELETE',
             })
@@ -63,7 +63,7 @@ class API {
         }
     }
 
-      getUser() {
+    getUser() {
         try {
             fetch.get('url here')
                 .then(response => response.json())
@@ -73,23 +73,7 @@ class API {
         } catch (err) {
             return err;
         }
-      }
-
-    
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
 
 export default new API();
