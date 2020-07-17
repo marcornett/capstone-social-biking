@@ -1,11 +1,12 @@
 #form {
   display: flex;
   flex-direction: column;
-  margin: 30px;
+  margin: auto;
   margin-top: 60px;
   margin-bottom: 60px;
   align-content: center;
 }
+
 
 #logo {
   text-align: center;
@@ -15,10 +16,12 @@ div.form-logo.col-md-4.col-6{
   display: flex;
   margin:auto;
   margin-bottom: 25px;
+  justify-content:center;
+  }
   
 
 
-}
+
 
 button.btn.btn-link{
   margin-top: 60px;  
@@ -43,12 +46,29 @@ input#formBasicPassword.form-control
   border: 1px solid rgba(0, 0 ,0, 0.5);
   font-size: 1rem;
   padding: 4px;
+  
   width: 100%;
   overflow: hidden;
   box-sizing: border-box;
-
+}
+input#formBasicPassword.form-control{
+  margin-top:20px;
+  
+}
+small.text-muted.form-text{
+  margin:5px auto;
+  
 }
 button.btn.btn-primary{
   margin-top:20px;
+  background:#FA424F;
+  border:#5fd1bd 1px solid;
 }
+button.btn.btn-primary:hover{
+  margin-top:20px;
+  background:#29cb31;
+  border:#FA424F 1px solid;
+}
+
+
 
