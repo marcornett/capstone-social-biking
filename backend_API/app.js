@@ -67,12 +67,7 @@ app.post("/api/users/register", async (req, res) => {
                 res.send(newUser)
 
             } else {
-                // TODO: Send plain message if user exists
-                res.format({
-                    'text/plain': function () {
-                        res.send('User already exists');
-                    }
-                })
+                res.json({ message: "User already exists" })
             }
         })
     } catch (err) {
@@ -100,8 +95,8 @@ app.post('/api/auth/login', async (req, res, next) => {
 })
 
 // Logout
-app.get('/api/auth/logout', async (req, res, next) => {
-    res.send({ auth: false, token: false })
+app.get('/api/auth/logout', (req, res, next) => {
+    res.json({ message: "Logged out", auth: false, token: false })
 })
 
 // Get user
@@ -148,7 +143,10 @@ app.delete('/api/users/:username', async (req, res) => {
             if (err) {
                 res.status(500).send("Internal Server Error")
             }
-            res.send("Account Deleted")
+            if (!user) {
+                res.json({ message: "Issue with request" })
+            }
+            res.json({ message: "Account Deleted" })
         })
     } catch (err) {
         res.status(500).send("Internal Server Error")
@@ -165,6 +163,9 @@ app.get("/api/groups", async (req, res) => {
             req.body.location ? req.body : null,
             // { location: req.body.location },
             function (err, groups) {
+                if (err) {
+                    res.send('Internal Server Error')
+                }
                 res.send(groups)
             })
     } catch (err) {
@@ -177,8 +178,14 @@ app.get("/api/groups/:groupName", async (req, res) => {
     try {
         await GroupModel.find(
             req.params ? req.params : null,
-            function (err, groups) {
-                res.send(groups)
+            function (err, group) {
+                if (err) {
+                    res.send('Internal Server Error')
+                }
+                if (!group) {
+                    res.send('Issue with request')
+                }
+                res.send(group)
             })
     } catch (err) {
         res.send('Internal Server Error')
