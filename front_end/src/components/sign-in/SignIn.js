@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'reactjs-popup'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button,Col,Image, } from 'react-bootstrap'
+import cyclelogo2 from "../assets/cyclelogo2.png"
 import './SignIn.css';
 
 
@@ -18,10 +19,12 @@ export const SignIn = () => {
     }
 
     return (
-        <Popup id="popup" trigger={<Button variant="link">Sign In</Button>} modal>
+        <Popup id="popup"  trigger={<Button variant="link">Sign In</Button>} modal>
             {close => (
                 <Form id="form" onSubmit={handleLogin}>
-                    <h2 id="logo">Logo</h2>
+                <Col className="form-logo" xs={6} md={4}>
+                <Image  src={cyclelogo2} alt="logo"  />
+              </Col>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control required type="email" placeholder="Enter email" />
