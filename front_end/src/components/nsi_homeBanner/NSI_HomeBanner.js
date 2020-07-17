@@ -1,7 +1,7 @@
 import React from 'react'
 import './NSI_HomeBanner.css'
 
-export const NSI_HomeBanner = () => {
+export const NSIHomeBanner = () => {
     return (
         <div>
             <div class="float-container">
