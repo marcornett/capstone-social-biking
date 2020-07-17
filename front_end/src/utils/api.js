@@ -17,6 +17,24 @@ class API {
             return err
         }
     }
+  
+    //TODO- still need to test 
+    async getGroupData(groupName) {
+        try {
+            await fetch(`${baseUrl}/groups/${groupName}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("getGroupData", data)
+                })
+        } catch (err) {
+            return err
+        }
+    }
 
     // TODO: Send plain message if user exists
     async createUser({ username, password, email, image }) {
