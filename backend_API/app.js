@@ -5,10 +5,11 @@ import path from 'path'
 import { UserModel } from './database/schemas/user'
 import { GroupModel } from './database/schemas/group'
 import jwt from 'jsonwebtoken'
+import bycrpt, { hash } from 'bcrypt'
 
 // Start App
 const app = express()
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 4000
 const CURRENT_SERVER_DIRECTORY = path.resolve(path.dirname("."))
 const STATIC_DIRECTORY = path.resolve(CURRENT_SERVER_DIRECTORY, "backend_API", "public")
 const JWT_SECRET = process.env.JWT_SECRET
@@ -16,62 +17,13 @@ const JWT_SECRET = process.env.JWT_SECRET
 // Connect to DB
 connectDB()
 
-const users = [{ username: "John", password: "password1", id: 3 }]
-
-
 // Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static(STATIC_DIRECTORY))
 app.use(cors({ origin: true }))
 
-// routes
-// user(app)
-// app.use('/users', user)
-
-// group(app)
-// app.use('/groups', group)
-
-// User Routes
-
-// Login
-// Working with token
-app.post('/api/auth/login', async (req, res, next) => {
-    const { username, password } = req.body
-
-    await UserModel.findOne({ username }, (err, user) => {
-        // Authentication 
-        if (user.username === username && user.password === password) {
-            const jsonToken = jwt.sign(
-                { payload: { username } },
-                JWT_SECRET,
-                { expiresIn: '1 days' }
-            )
-            res.send({ auth: true, token: jsonToken, username })
-        }
-    })
-})
-
-// Get user
-// Working with token
-app.get('/api/users/:username', async (req, res) => {
-    const token = req.headers["authorization"]
-    if (!token) {
-        return res.send('Not authorized')
-    }
-    try {
-        jwt.verify(token, JWT_SECRET, async function (err, decoded) {
-            await UserModel.findOne({ username: req.params.username }, (err, user) => {
-                res.send(user)
-            })
-        })
-    } catch (err) {
-        res.status(500).send("Internal Server Error")
-    }
-})
-
 // Get All users
-// Working
 app.get('/api/users', async (req, res) => {
     try {
         await UserModel.find((err, users) => {
@@ -86,7 +38,6 @@ app.get('/api/users', async (req, res) => {
 })
 
 // Register User
-// Working with token
 app.post("/api/users/register", async (req, res) => {
     const {
         username,
@@ -94,6 +45,8 @@ app.post("/api/users/register", async (req, res) => {
         email,
         image
     } = req.body
+
+    const hash = await bycrpt.hash(password, 8)
 
     try {
         await UserModel.findOne({ username }, async (err, user) => {
@@ -105,7 +58,7 @@ app.post("/api/users/register", async (req, res) => {
                 )
                 const newUser = new UserModel({
                     username,
-                    password,
+                    password: hash,
                     email,
                     image,
                     token: jsonToken
@@ -114,7 +67,6 @@ app.post("/api/users/register", async (req, res) => {
                 res.send(newUser)
 
             } else {
-                console.log(user)
                 // TODO: Send plain message if user exists
                 res.format({
                     'text/plain': function () {
@@ -122,6 +74,47 @@ app.post("/api/users/register", async (req, res) => {
                     }
                 })
             }
+        })
+    } catch (err) {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+// Login
+app.post('/api/auth/login', async (req, res, next) => {
+    const { username, password } = req.body
+
+    await UserModel.findOne({ username }, async (err, user) => {
+        // Hashed password
+        const hash = await bycrpt.hash(password, 8)
+        bycrpt.compare(password, hash, (err, same) => {
+            // Authentication 
+            const jsonToken = jwt.sign(
+                { payload: { username } },
+                JWT_SECRET,
+                { expiresIn: '1 days' }
+            )
+            res.send({ auth: true, token: jsonToken, username })
+        })
+    })
+})
+
+// Logout
+app.get('/api/auth/logout', async (req, res, next) => {
+    res.send({ auth: false, token: false })
+})
+
+// Get user
+app.get('/api/users/:username', async (req, res) => {
+    const token = req.headers["authorization"]
+    if (!token) {
+        return res.send('Not authorized')
+    }
+    try {
+        jwt.verify(token, JWT_SECRET, async function (err, decoded) {
+            await UserModel.findOne({ username: req.params.username }, (err, user) => {
+                res.send(user)
+            })
         })
     } catch (err) {
         res.status(500).send("Internal Server Error")
@@ -155,7 +148,7 @@ app.delete('/api/users/:username', async (req, res) => {
             if (err) {
                 res.status(500).send("Internal Server Error")
             }
-            res.send(user)
+            res.send("Account Deleted")
         })
     } catch (err) {
         res.status(500).send("Internal Server Error")
@@ -164,7 +157,7 @@ app.delete('/api/users/:username', async (req, res) => {
 
 
 // Group Routes
-
+// TODO
 app.get("/api/groups", async (req, res) => {
     try {
         await GroupModel.find(
@@ -219,5 +212,5 @@ app.post("/api/groups", async (req, res) => {
 
 // App Listening
 app.listen(port, () => {
-    console.log(`Listening on localhost:${port}`)
+    console.log(`Listening on http://localhost:${port}`)
 })
