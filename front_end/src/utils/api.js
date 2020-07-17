@@ -18,11 +18,11 @@ class API {
         }
     }
 
-    // TODO: Send plain message if user exists
-    async createUser({ username, password, email, image }) {
+    // TODO: Receive plain message if user exists
+    async registerUser({ username, password, email, image }) {
         const user = { username, password, email, image }
         try {
-            await fetch(`${baseUrl}/users`, {
+            await fetch(`${baseUrl}/users/register`, {
                 method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
@@ -40,7 +40,7 @@ class API {
     // TODO
     async login({ username, password }) {
         try {
-            await fetch('/users', {
+            await fetch(`${baseUrl}/auth/login`, {
                 method: 'POST',
                 body: JSON.stringify(),
                 headers: {
@@ -58,7 +58,7 @@ class API {
     // TODO
     async logout() {
         try {
-            fetch.get(`${baseUrl}/`)
+            fetch.get(`${baseUrl}/auth/logout`)
                 .then(response => response.json())
                 .then(response => {
                     //do something with response
