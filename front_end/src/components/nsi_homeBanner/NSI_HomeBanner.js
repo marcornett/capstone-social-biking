@@ -7,7 +7,7 @@ export const NSIHomeBanner = () => {
             <div class="float-container">
 
                 <div class="float-child">
-                    <div class="green"><h1>Join biking groups <br></br> in you area</h1>
+                    <div class="green"><h1>Join Biking groups <br></br> in you area</h1>
                     </div>
                     <hr />
                     <br />
