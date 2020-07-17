@@ -4,6 +4,8 @@ import dotenv from 'dotenv'
 dotenv.config()
 const URL = process.env.DB_CONNECTION
 
+mongoose.set('useFindAndModify', false)
+
 export const connectDB = async () => {
     mongoose.connect(
         URL,
