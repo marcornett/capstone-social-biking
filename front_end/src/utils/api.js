@@ -21,6 +21,24 @@ class api {
             return err
         }
     }
+  
+    //TODO- still need to test 
+    async getGroupData(groupName) {
+        try {
+            await fetch(`${baseUrl}/groups/${groupName}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("getGroupData", data)
+                })
+        } catch (err) {
+            return err
+        }
+    }
 
     async registerUser({ username, password, email, image }) {
         const user = { username, password, email, image }
