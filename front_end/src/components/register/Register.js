@@ -17,15 +17,14 @@ export const Register = () => {
         error: [],
         isSubmitted: false
     })
-    const [users, setUsers] = useState([])
 
     useEffect(() => {
 
         API.getUserInfo('Marcel')
         API.createUser({
-            username: "Drake",
-            password: "drizzy",
-            email: 'drake@gmail.com'
+            username: "Testname",
+            password: "testname",
+            email: 'testname@gmail.com'
         })
         API.putUserImage()
         // API.deleteUser()
