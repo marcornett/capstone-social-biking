@@ -1,38 +1,14 @@
-import { useState, useEffect } from "react"
+import { usePosition } from 'use-position';
 
-export const useLocation = (options = {}) => {
-    const [location, setLocation] = useState();
-    const [error, setError] = useState();
-
-    const handleSuccess = (pos) => {
-        const { latitude, longitude } = pos.coords;
-
-        setLocation({
-            latitude,
-            longitude,
-        });
-        console.log(pos.coords)
-    };
-
-    const handleError = (error) => {
-        setError(error.message);
-    };
-
-    useEffect(() => {
-        const { geolocation } = navigator;
-        if (!geolocation) {
-            setError("Can't get geoLocation!!!! ");
-            return;
-        }
-        geolocation.getCurrentPosition(handleSuccess, handleError, options);
-    }, [options]);
-
-
-    return { position: location, error };
-};
-
-
-//part of code was has been used from source online -Gordon Mathurin
+export const LocateUserPosition = () => {
+    const {
+        latitude,
+        longitude,
+        accuracy,
+        // error,
+    } = usePosition();
+    console.log(`latitude:${latitude}, longitude:${longitude}, accuracy:${accuracy}`)
+}
 
 
 
@@ -49,20 +25,3 @@ export const useLocation = (options = {}) => {
 
 
 
-
-
-
-
-
-
-
-// try {
-//     if ('geolocation' in navigator) {
-//         console.log("geolocation available")
-//         navigator.geolocation.getCurrentPosition((position) => {
-//             console.log(position)
-//         });
-//     }
-// } catch (err) {
-//     console.log("geolocation not available", err)
-// }
