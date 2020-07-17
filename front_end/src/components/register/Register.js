@@ -1,25 +1,39 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Popup from 'reactjs-popup'
 import { Form, Button } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import './Register.css';
 
+import API from '../../utils/api'
+
 
 export const Register = () => {
-    const [userRegister, setState] = useState({
+    const [userData, setState] = useState({
         username: '',
-        displayName: '',
+        email: '',
+        image: '',
         password: '',
         passwordConfirmation: '',
         error: [],
         isSubmitted: false
     })
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+
+        API.getUserInfo('Marcel')
+        API.createUser({
+            username: "Bravo",
+            password: "bravest",
+            email: 'bravo@gmail.com'
+        })
+    }, [])
 
     const handleLogin = (event) => {
         // May have to prevent the default depending on how this loads
         // event.preventDefault()
         console.log('Sign In')
-        setState(userRegister)
+        setState()
     }
 
     return (
