@@ -1,27 +1,64 @@
-
-
+const baseUrl = 'http://localhost:5000'
 class API {
-    login() {
+    // Working
+    async getUsers() {
         try {
-            fetch('url here', {
-                method: 'POST',
-                body: JSON.stringify(),
+            await fetch(`${baseUrl}/users`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())
-                .then(response => {
-                    //do something with response
+                .then(data => {
+                    console.log(data)
+                })
+        } catch (err) {
+            return err
+        }
+    }
+
+    // Working
+    async createUser({ username, password, email, image }) {
+        const user = { username, password, email, image }
+        try {
+            await fetch(`${baseUrl}/users`, {
+                method: 'POST',
+                body: JSON.stringify(user),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    console.log("createUser", data)
                 })
         } catch (err) {
             return err;
         }
     }
 
-    logout() {
+    // TODO
+    async login({ username, password }) {
         try {
-            fetch.get('url here')
+            await fetch('/users', {
+                method: 'POST',
+                body: JSON.stringify(),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(response => {
+                    console.log(response)
+                })
+        } catch (err) {
+            return err;
+        }
+    }
+
+    // TODO
+    async logout() {
+        try {
+            fetch.get(`${baseUrl}/`)
                 .then(response => response.json())
                 .then(response => {
                     //do something with response
@@ -31,7 +68,21 @@ class API {
         }
     }
 
-    UploadUserImage(username) {
+    // Working
+    async getUserInfo(username) {
+        try {
+            await fetch(`${baseUrl}/users/${username}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log("getUserInfo", data);
+                })
+        } catch (err) {
+            return err;
+        }
+    }
+
+    // TODO
+    async putUserImage(username, formData) {
         try {
             fetch(`url here ${username}`, {
                 method: 'PUT',
@@ -49,7 +100,8 @@ class API {
         }
     }
 
-    deleteUser(username) {
+    // TODO
+    async deleteUser(username) {
         try {
             fetch(`url here :${username}`, {
                 method: 'DELETE',
@@ -60,18 +112,6 @@ class API {
                 })
         } catch (err) {
             return err
-        }
-    }
-
-    getUser() {
-        try {
-            fetch.get('url here')
-                .then(response => response.json())
-                .then(response => {
-                    //do something with response
-                })
-        } catch (err) {
-            return err;
         }
     }
 }
