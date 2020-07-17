@@ -12,10 +12,6 @@ export const DELETE_USER = "USERS/DELETE_USER"
 export const DELETE_USER_SUCCESS = "USERS/DELETE_USER_SUCCESS"
 export const DELETE_USER_FAILURE = "USERS/DELETE_USER_FAILURE"
 
-export const DELETE_USER = "USERS/DELETE_USER"
-export const DELETE_USER_SUCCESS = "USERS/DELETE_USER_SUCCESS"
-export const DELETE_USER_FAILURE = "USERS/DELETE_USER_FAILURE"
-
 export const getUser = (credentials) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
