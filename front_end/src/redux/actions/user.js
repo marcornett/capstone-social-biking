@@ -15,10 +15,8 @@ export const DELETE_USER_FAILURE = "USERS/DELETE_USER_FAILURE"
 export const getUser = (credentials) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
-    // console.log('did it run?')
     const payload = await api.getUser(credentials);
-    // ℹ️ℹ️This is how you woud debug the response to a requestℹ️ℹ️
-    console.log({ payload })
+
     dispatch({ type: GET_USER_SUCCESS, payload });
   } catch (err) {
     dispatch({
