@@ -1,10 +1,14 @@
 import mongoose from 'mongoose'
+import dotenv from 'dotenv'
 
-const URI = "mongodb+srv://marcornett:r6CqDCV2fYOiE1uM@cluster0.rofev.mongodb.net/<dbname>?retryWrites=true&w=majority"
+dotenv.config()
+const URL = process.env.DB_CONNECTION
+
+mongoose.set('useFindAndModify', false)
 
 export const connectDB = async () => {
     mongoose.connect(
-        URI,
+        URL,
         { useUnifiedTopology: true, useNewUrlParser: true },
         () => {
             console.log(`Connected to DB /`)
