@@ -9,7 +9,8 @@ const userSchema = Schema({
     image: {
         data: Buffer,
         contentType: String
-    }
+    },
+    token: String
 })
 
 export const UserModel = model('User', userSchema)
