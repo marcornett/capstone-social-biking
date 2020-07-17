@@ -18,7 +18,7 @@ class API {
         }
     }
 
-    // Working
+    // TODO: Send plain message if user exists
     async createUser({ username, password, email, image }) {
         const user = { username, password, email, image }
         try {
@@ -81,19 +81,19 @@ class API {
         }
     }
 
-    // TODO
+    // Working
     async putUserImage(username, formData) {
         try {
-            fetch(`url here ${username}`, {
+            await fetch(`${baseUrl}/users/${username}/picture`, {
                 method: 'PUT',
-                body: JSON.stringify(),
+                body: JSON.stringify({ image: formData }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
                 .then(response => response.json())
-                .then(response => {
-                    //do something with response
+                .then(data => {
+                    console.log("putUserImage", data);
                 })
         } catch (err) {
             return err
@@ -103,12 +103,12 @@ class API {
     // TODO
     async deleteUser(username) {
         try {
-            fetch(`url here :${username}`, {
+            fetch(`${baseUrl}/users/${"jeff"}`, {
                 method: 'DELETE',
             })
                 .then(response => response.json())
-                .then(response => {
-                    //do something with response, "Are you sure you want to delete? alert message"
+                .then(data => {
+                    console.log("deleteUser", data)
                 })
         } catch (err) {
             return err
