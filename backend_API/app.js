@@ -155,9 +155,9 @@ app.delete('/api/users/:username', async (req, res) => {
     }
 })
 
-
 // Group Routes
-// TODO
+
+// Get groups
 app.get("/api/groups", async (req, res) => {
     try {
         await GroupModel.find(
@@ -172,6 +172,7 @@ app.get("/api/groups", async (req, res) => {
     }
 })
 
+// Get one group
 app.get("/api/groups/:groupName", async (req, res) => {
     try {
         await GroupModel.find(
@@ -184,7 +185,8 @@ app.get("/api/groups/:groupName", async (req, res) => {
     }
 })
 
-// Makes a group but front-end won't use until we include a make group component
+// Make group
+// TODO: This works but may not be needed
 app.post("/api/groups", async (req, res) => {
     const {
         groupName,
