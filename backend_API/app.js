@@ -1,6 +1,5 @@
 import express, { response } from 'express'
 import cors from 'cors'
-import { Schema } from 'mongoose'
 import { connectDB } from './database/connect'
 import path from 'path'
 import { UserModel } from './database/schemas/user'
@@ -31,43 +30,60 @@ app.use(cors({ origin: true }))
 
 app.get('/users', async (req, res) => {
     try {
-        UserModel.find((err, users) => {
-
+        await UserModel.find((err, users) => {
+            if (err) {
+                res.status(500).send("Internal Server Error")
+            }
             res.send(users)
         })
     } catch (err) {
-        res.send("Internal Server Error")
+        res.status(500).send("Internal Server Error")
     }
 })
 
 app.get('/users/:username', async (req, res) => {
-    console.log(req.params.username)
     try {
-        UserModel.findOne({ username: req.params.username }, (err, user) => {
+        await UserModel.findOne({ username: req.params.username }, (err, user) => {
+            if (err) {
+                res.status(500).send("Internal Server Error")
+            }
             res.send(user)
         })
     } catch (err) {
-        res.send("Internal Server Error")
+        res.status(500).send("Internal Server Error")
     }
 })
 
 app.post("/users", async (req, res) => {
-    const {
-        username,
-        password,
-        email,
-        image
-    } = req.body
-
-    const user = new UserModel({
-        username,
-        password,
-        email,
-        image
-    })
     try {
-        await user.save()
-        res.send(user)
+        await UserModel.findOne({ username: req.body.username }, async (err, user) => {
+            if (user) {
+                console.log(user)
+                // TODO: Send plain message if user exists
+                res.format({
+                    'text/plain': function () {
+                        res.send('hey');
+                    }
+                })
+            } else {
+                const {
+                    username,
+                    password,
+                    email,
+                    image
+                } = req.body
+
+                const newUser = new UserModel({
+                    username,
+                    password,
+                    email,
+                    image
+                })
+
+                await newUser.save()
+                res.send(newUser)
+            }
+        })
     } catch (err) {
         res.status(500).send("Internal Server Error")
     }
@@ -75,7 +91,34 @@ app.post("/users", async (req, res) => {
 
 app.put("/users/:username/picture", async (req, res) => {
     // Update user image
-    const user = await UserModel.findOneAndUpdate()
+    try {
+        await UserModel.findOneAndUpdate(
+            { username: req.params.username },
+            { image: req.body.image },
+            { new: true },
+            (err, user) => {
+                if (err) {
+                    res.status(500).send("Internal Server Error")
+                }
+                res.send(user)
+            }
+        )
+    } catch (err) {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+app.delete('/users/:username', async (req, res) => {
+    try {
+        await UserModel.findOneAndDelete({ username: req.params.username }, (err, user) => {
+            if (err) {
+                res.status(500).send("Internal Server Error")
+            }
+            res.send(user)
+        })
+    } catch (err) {
+        res.status(500).send("Internal Server Error")
+    }
 })
 
 // App Listening
