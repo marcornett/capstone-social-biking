@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 
-
+// not sure this needs access to store
 const mapStateToProps = (state) => ({
  
 });
