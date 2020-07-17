@@ -11,7 +11,7 @@ export const useLocation = (options = {}) => {
             latitude,
             longitude,
         });
-        console.log(pos.coords)
+        // console.log(pos.coords)
     };
 
     const handleError = (error) => {
