@@ -23,10 +23,12 @@ export const Register = () => {
 
         API.getUserInfo('Marcel')
         API.createUser({
-            username: "Bravo",
-            password: "bravest",
-            email: 'bravo@gmail.com'
+            username: "Drake",
+            password: "drizzy",
+            email: 'drake@gmail.com'
         })
+        API.putUserImage()
+        // API.deleteUser()
     }, [])
 
     const handleLogin = (event) => {
