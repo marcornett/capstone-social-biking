@@ -9,6 +9,9 @@ import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import "./ProfileIcon.css";
+import Popup from 'reactjs-popup'
+import { Form, Button, } from 'react-bootstrap'
+import cyclelogo2 from "../assets/cyclelogo2.png"
 
 
 const SetProfileIcon = ({
@@ -31,7 +34,44 @@ const SetProfileIcon = ({
     //     console.log(photo);
     // };
 
+    // TODO: need to add things that user can change so change up form to make sense for profile icon
+    //TODO: email, username, groups, put image button, delete image button, delete user button
     return (
+        <Popup id="popup" trigger={<Container>
+            <Row>
+                <Col xs={3} md={2}>
+                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
+                </Col>
+            </Row>
+        </Container>} modal>
+            {close => (
+                <Form id="form" onSubmit="">
+                    <Col className="form-logo" xs={6} md={4}>
+                        <Image src={cyclelogo2} alt="logo" />
+                    </Col>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control required type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control required type="password" placeholder="Password" />
+                    </Form.Group>
+                    <Form.Group controlId="formBasicCheckbox">
+                        {/* <Form.Check type="checkbox" label="Save Password" /> */}
+                    </Form.Group>
+                    <Button variant="primary" type="submit" >
+                        Submit
+            </Button>
+                </Form>
+
+
+            )}
+        </Popup>
         // <div className="container">
         //     <div className="user-name">
         //         <b>Username</b>
@@ -68,14 +108,9 @@ const SetProfileIcon = ({
         //         </p>
         //     </form>
 
-        <Container>
-            <Row>
-                <Col xs={3} md={2}>
-                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
-                </Col>
-            </Row>
-        </Container>
+
         // </div>
+
 
 
     );
