@@ -25,8 +25,8 @@ export const SignIn = () => {
                 <Col className="form-logo" xs={6} md={4}>
                 <Image  src={cyclelogo2} alt="logo"  />
               </Col>
+              <Form.Label><h4>Sign in</h4></Form.Label>
                     <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
                         <Form.Control required type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
@@ -34,7 +34,7 @@ export const SignIn = () => {
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                       {/* <Form.Label>Password</Form.Label>*/}
                         <Form.Control required type="password" placeholder="Password" />
                     </Form.Group>
                     <Form.Group controlId="formBasicCheckbox">
