@@ -1,6 +1,10 @@
-const baseUrl = 'http://localhost:5000'
-class API {
-    // Working
+// const baseUrl = '/api'
+
+// TODO: This needs to be switched once pushed to Heroku
+const baseUrl = 'http://localhost:4000/api'
+
+class api {
+    // This may not get used
     async getUsers() {
         try {
             await fetch(`${baseUrl}/users`, {
@@ -11,7 +15,7 @@ class API {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log(data)
+                    console.log("get users", data)
                 })
         } catch (err) {
             return err
@@ -36,11 +40,10 @@ class API {
         }
     }
 
-    // TODO: Send plain message if user exists
-    async createUser({ username, password, email, image }) {
+    async registerUser({ username, password, email, image }) {
         const user = { username, password, email, image }
         try {
-            await fetch(`${baseUrl}/users`, {
+            await fetch(`${baseUrl}/users/register`, {
                 method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
@@ -55,18 +58,18 @@ class API {
         }
     }
 
-    // TODO
     async login({ username, password }) {
+        const user = { username, password }
         try {
-            await fetch('/users', {
+            await fetch(`${baseUrl}/auth/login`, {
                 method: 'POST',
-                body: JSON.stringify(),
+                body: JSON.stringify(user),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             }).then(response => response.json())
                 .then(response => {
-                    console.log(response)
+                    console.log("login", response)
                 })
         } catch (err) {
             return err;
@@ -76,10 +79,19 @@ class API {
     // TODO
     async logout() {
         try {
-            fetch.get(`${baseUrl}/`)
-                .then(response => response.json())
+            await fetch.get(`${baseUrl}/auth/logout`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
                 .then(response => {
-                    //do something with response
+                    response.json()
+                    // TODO Get something back
+                    console.log("json", response)
+                })
+                .then(data => {
+                    console.log("hello", data)
                 })
         } catch (err) {
             return err;
@@ -87,9 +99,14 @@ class API {
     }
 
     // Working
-    async getUserInfo(username) {
+    async getUserInfo(username, token) {
         try {
-            await fetch(`${baseUrl}/users/${username}`)
+            await fetch(`${baseUrl}/users/${username}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `${token}`
+                }
+            })
                 .then(response => response.json())
                 .then(data => {
                     console.log("getUserInfo", data);
@@ -118,10 +135,10 @@ class API {
         }
     }
 
-    // TODO
+    // Working
     async deleteUser(username) {
         try {
-            fetch(`${baseUrl}/users/${"jeff"}`, {
+            fetch(`${baseUrl}/users/${username}`, {
                 method: 'DELETE',
             })
                 .then(response => response.json())
@@ -132,6 +149,36 @@ class API {
             return err
         }
     }
+
+    // Working
+    async getGroups() {
+        try {
+            fetch(`${baseUrl}/groups`, {
+                method: 'GET',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Groups", data)
+                })
+        } catch (err) {
+            return err
+        }
+    }
+
+    // Working
+    async getGroup(groupName) {
+        try {
+            fetch(`${baseUrl}/groups/${groupName}`, {
+                method: 'GET',
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("One group", data)
+                })
+        } catch (err) {
+            return err
+        }
+    }
 }
 
-export default new API();
+export default new api();

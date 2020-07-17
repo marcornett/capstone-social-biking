@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Popup from 'reactjs-popup'
-import { Form, Button,Image,Col } from 'react-bootstrap'
+import { Form, Button, Image, Col } from 'react-bootstrap'
 import { Redirect } from 'react-router-dom'
 import cyclelogo2 from "../assets/cyclelogo2.png"
 import './Register.css';
@@ -21,14 +21,6 @@ export const Register = () => {
 
     useEffect(() => {
 
-        API.getUserInfo('Marcel')
-        API.createUser({
-            username: "Testname",
-            password: "testname",
-            email: 'testname@gmail.com'
-        })
-        API.putUserImage()
-        // API.deleteUser()
     }, [])
 
     const handleLogin = (event) => {
@@ -39,10 +31,10 @@ export const Register = () => {
     }
 
     return (
-        <Popup id="popup"  trigger={<Button variant="link">Register</Button>} modal>
+        <Popup id="popup" trigger={<Button variant="link">Register</Button>} modal>
             {close => (
                 <Form id="form" onSubmit={handleLogin}>
-                    
+
                     <Col className="form-logo" xs={6} md={4}>
                     <Image  src={cyclelogo2} alt="logo"  />
                   </Col>
