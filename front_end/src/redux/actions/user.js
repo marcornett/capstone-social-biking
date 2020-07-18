@@ -16,10 +16,10 @@ export const DELETE_USER = "USERS/DELETE_USER"
 export const DELETE_USER_SUCCESS = "USERS/DELETE_USER_SUCCESS"
 export const DELETE_USER_FAILURE = "USERS/DELETE_USER_FAILURE"
 
-export const getUser = (credentials) => async (dispatch, getState) => {
+export const getUser = (username, token) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
-    const payload = await api.getUserInfo(credentials);
+    const payload = await api.getUserInfo(username, token);
 
     dispatch({ type: GET_USER_SUCCESS, payload });
   } catch (err) {
@@ -30,10 +30,10 @@ export const getUser = (credentials) => async (dispatch, getState) => {
   }
 };
 
-export const registerUser = (credentials) => async (dispatch, getState) => {
+export const registerUser = (username, password, email, image) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
-      const payload = await api.registerUser(credentials);
+      const payload = await api.registerUser(username, password, email, image);
 
     dispatch({ type: GET_USER_SUCCESS, payload });
   } catch (err) {
@@ -44,10 +44,10 @@ export const registerUser = (credentials) => async (dispatch, getState) => {
   }
 };
 
-export const uploadUserImage = (data) => async (dispatch, getState) => {
+export const uploadUserImage = (username, formData) => async (dispatch, getState) => {
   try {
     dispatch({ type: USER_IMAGE_UPLOAD });
-    const payload = await api.putUserImage(data);
+    const payload = await api.putUserImage(username, formData);
     dispatch({ type: USER_IMAGE_UPLOAD_SUCCESS, payload });
   } catch (err) {
     dispatch({
@@ -57,10 +57,10 @@ export const uploadUserImage = (data) => async (dispatch, getState) => {
   }
 };
 
-export const deleteUser = (credentials) => async (dispatch, getState) => {
+export const deleteUser = (username) => async (dispatch, getState) => {
   try {
     dispatch({ type: DELETE_USER });
-    const payload = await api.deleteUser(credentials);
+    const payload = await api.deleteUser(username);
     dispatch({ type: DELETE_USER_SUCCESS, payload });
   } catch (err) {
     dispatch({
