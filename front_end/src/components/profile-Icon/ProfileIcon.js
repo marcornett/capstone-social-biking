@@ -45,10 +45,46 @@ const SetProfileIcon = ({
             </Row>
         </Container>} modal>
             {close => (
+                //TODO: onSubmit function needed here
                 <Form id="form" onSubmit="">
                     <Col className="form-logo" xs={6} md={4}>
                         <Image src={cyclelogo2} alt="logo" />
                     </Col>
+
+                    <fieldset>
+                        <Form.Group as={Row}>
+                            <Form.Label as="legend" column sm={2}>
+                                Update Group
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 1"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios1"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 2"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios2"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 3"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios3"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 1 4"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios3"
+                                />
+                            </Col>
+                        </Form.Group>
+                    </fieldset>
+
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control required type="email" placeholder="Enter email" />
@@ -57,16 +93,15 @@ const SetProfileIcon = ({
                 </Form.Text>
                     </Form.Group>
 
-                    <Form.Group controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control required type="password" placeholder="Password" />
+
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Update Username</Form.Label>
+                        <Form.Control required type="text" placeholder="Enter New Username" />
                     </Form.Group>
-                    <Form.Group controlId="formBasicCheckbox">
-                        {/* <Form.Check type="checkbox" label="Save Password" /> */}
-                    </Form.Group>
-                    <Button variant="primary" type="submit" >
-                        Submit
-            </Button>
+
+                    <Button variant="warning" size="sm">Delete User</Button>
+
+                    <Button variant="primary" type="submit"> Submit </Button>
                 </Form>
 
 
