@@ -4,14 +4,14 @@ import './Home.css'
 import { NavigationBar } from "../components/navigationBar"
 import { FooterPage } from "../components/footer"
 import { NSIHomeBanner } from "../components/nsi_homeBanner"
-import { MostRecentUsers } from "../components/most-recent-users"
+import { MostRecentUsersContainer } from "../components/most-recent-users"
 
 export const HomeSignedOut = () => (
     <div className="home">
         <NavigationBar />
         <NSIHomeBanner />
         <GroupGridContainer />
-        <MostRecentUsers />
+        <MostRecentUsersContainer />
         <FooterPage />
     </div>
 )
