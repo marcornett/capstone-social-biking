@@ -6,7 +6,7 @@ import api from '../../utils/api'
 export const GroupGrid = ({ groups, getAllGroups }) => {
     useEffect(() => {
         // API call to get data works, need to be connected to DB
-        getAllGroups()
+        // getAllGroups()
     }, [])
 
     return (
