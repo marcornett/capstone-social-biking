@@ -27,10 +27,6 @@
   border: gray 1px solid;
 }
 
-h4 {
-  margin-top: 10px;
-}
-
 #groupTitle {
   margin-top: 10px;
 }
@@ -38,5 +34,12 @@ h4 {
 @media screen and (max-width: 800px) {
   .groupLink {
     flex-basis: 80%;
+  }
+  .groupLink img {
+    height: 75%;
+  }
+
+  #groupTitle {
+    font-size: 30px;
   }
 }
