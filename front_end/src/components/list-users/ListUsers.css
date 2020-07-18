@@ -1,0 +1,8 @@
+.userContainer{
+  display:flex;
+  align-items: center;
+}
+Image{
+  margin:0px;
+  padding: 0px
+}
