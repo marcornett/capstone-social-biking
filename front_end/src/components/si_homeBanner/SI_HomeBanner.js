@@ -2,7 +2,7 @@ import React from 'react'
 import Card from 'react-bootstrap/Card'
 
 
-export const SI_HomeBanner = () => {
+export const SIHomeBanner = () => {
     return (
         <div>
             <Card border="success" style={{ width: '40em' }}>

@@ -2,15 +2,39 @@
   border: 3px solid #fff;
   padding: 20px;
 } */
-
-.float-child {
-  width: 20%;
-  float: left;
-  padding: 20px;
-  /* border: 2px solid red; */
+.nsi-banner {
+  display: flex;
+  padding: 100px;
+  width: 100%;
+  border: solid 1px #cccc;
+  background: url('../assets/cyclebreak.jpg') no-repeat center/cover;
+  
 }
 
-.flexcontainer {
+.nsi-banner-pic {
+  margin-left: 80px;
+}
+.nsi-join {
+  text-align: left;
+  width: 50%;
+  letter-spacing: 0.2rem;
+}
+.nsi-content {
   display: flex;
-  flex-direction: row;
+  width: 70%;
+}
+.jbg-text {
+  margin-right: 100px;
+  background-color: #fa424f;
+  padding: 10px;
+  color: white;
+}
+.jbg-text-2 {
+  background-color: #5fd1bd;
+  padding: 10px;
+  color: white;
+}
+button.btn.btn-primary {
+  width: 25%;
+  letter-spacing: 0.1rem;
 }
