@@ -6,4 +6,4 @@ const mapDispatchToProps = {
   registerUser
 };
 
-export const enhancer = connect(mapStateToProps, mapDispatchToProps);
+export const enhancer = connect( null, mapDispatchToProps);

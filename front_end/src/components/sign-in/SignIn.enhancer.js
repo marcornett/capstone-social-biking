@@ -5,4 +5,4 @@ const mapDispatchToProps = {
   getUser
 };
 
-export const enhancer = connect(mapDispatchToProps);
+export const enhancer = connect(null, mapDispatchToProps);
