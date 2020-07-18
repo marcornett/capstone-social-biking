@@ -1,14 +1,12 @@
 import { connect } from "react-redux";
-import { login } from "../../redux/actions/auth"
 
-
+// need to add an action, reducer and api call that gets all groups
 const mapStateToProps = (state) => ({
-  username: state.auth.username,
-  error: state.auth.error,
+
 });
 
 const mapDispatchToProps = {
-  login
+  
 };
 
 export const enhancer = connect(mapStateToProps, mapDispatchToProps);
