@@ -15,13 +15,13 @@ class api {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("get users", data)
+                    return data
                 })
         } catch (err) {
             return err
         }
     }
-  
+
 
     async registerUser({ username, password, email, image }) {
         const user = { username, password, email, image }
@@ -34,7 +34,7 @@ class api {
                 }
             }).then(response => response.json())
                 .then(data => {
-                    console.log("createUser", data)
+                    return data
                 })
         } catch (err) {
             return err;
@@ -51,8 +51,8 @@ class api {
                     'Content-Type': 'application/json'
                 }
             }).then(response => response.json())
-                .then(response => {
-                    console.log("login", response)
+                .then(data => {
+                    return data
                 })
         } catch (err) {
             return err;
@@ -92,7 +92,7 @@ class api {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("getUserInfo", data);
+                    return data
                 })
         } catch (err) {
             return err;
@@ -111,7 +111,7 @@ class api {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("putUserImage", data);
+                    return data
                 })
         } catch (err) {
             return err
@@ -126,7 +126,8 @@ class api {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("deleteUser", data)
+                    return data
+
                 })
         } catch (err) {
             return err
@@ -136,13 +137,10 @@ class api {
     // Working
     async getGroups() {
         try {
-            fetch(`${baseUrl}/groups`, {
+            const response = await fetch(`${baseUrl}/groups`, {
                 method: 'GET',
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log("Groups", data)
-                })
+            return response.json()
         } catch (err) {
             return err
         }
@@ -156,10 +154,30 @@ class api {
             })
                 .then(response => response.json())
                 .then(data => {
-                    console.log("One group", data)
+                    return data
                 })
         } catch (err) {
             return err
+        }
+    }
+
+    // Working
+    async makeGroup({ groupName, location, image, about, eventList }) {
+        const group = { groupName, location, image, about, eventList }
+        try {
+            await fetch(`${baseUrl}/groups`, {
+                method: 'POST',
+                body: JSON.stringify(group),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    return data
+                })
+        } catch (err) {
+            return err;
         }
     }
 }
