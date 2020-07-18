@@ -1,9 +1,12 @@
 import { connect } from "react-redux";
-import { registerUser } from "../../redux/actions/user"
 
-// add the action and reducer first
+// need to add an action, reducer and api call that gets all groups
+const mapStateToProps = (state) => ({
+
+});
+
 const mapDispatchToProps = {
-  registerUser
+  
 };
 
 export const enhancer = connect(mapStateToProps, mapDispatchToProps);
