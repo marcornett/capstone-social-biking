@@ -8,10 +8,13 @@ import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
-import "./ProfileIcon.css";
+import Card from "react-bootstrap/Card"
 import Popup from 'reactjs-popup'
-import { Form, Button, } from 'react-bootstrap'
-import cyclelogo2 from "../assets/cyclelogo2.png"
+import { Button } from 'react-bootstrap'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Form from 'react-bootstrap/Form'
+import "./ProfileIcon.css";
 
 
 const SetProfileIcon = ({
@@ -34,8 +37,6 @@ const SetProfileIcon = ({
     //     console.log(photo);
     // };
 
-    // TODO: need to add things that user can change so change up form to make sense for profile icon
-    //TODO: email, username, groups, put image button, delete image button, delete user button
     return (
         <Popup id="popup" trigger={<Container>
             <Row>
@@ -45,65 +46,47 @@ const SetProfileIcon = ({
             </Row>
         </Container>} modal>
             {close => (
-                //TODO: onSubmit function needed here
-                <Form id="form" onSubmit="">
-                    <Col className="form-logo" xs={6} md={4}>
-                        <Image src={cyclelogo2} alt="logo" />
-                    </Col>
-
-                    <fieldset>
-                        <Form.Group as={Row}>
-                            <Form.Label as="legend" column sm={2}>
-                                Update Group
-                            </Form.Label>
-                            <Col sm={10}>
-                                <Form.Check
-                                    type="radio"
-                                    label="group name 1"
-                                    name="formHorizontalRadios"
-                                    id="formHorizontalRadios1"
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="group name 2"
-                                    name="formHorizontalRadios"
-                                    id="formHorizontalRadios2"
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="group name 3"
-                                    name="formHorizontalRadios"
-                                    id="formHorizontalRadios3"
-                                />
-                                <Form.Check
-                                    type="radio"
-                                    label="group name 1 4"
-                                    name="formHorizontalRadios"
-                                    id="formHorizontalRadios3"
-                                />
-                            </Col>
-                        </Form.Group>
-                    </fieldset>
-
-                    <Form.Group controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control required type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                </Form.Text>
-                    </Form.Group>
-
-
-                    <Form.Group controlId="formBasicUsername">
-                        <Form.Label>Update Username</Form.Label>
-                        <Form.Control required type="text" placeholder="Enter New Username" />
-                    </Form.Group>
-
-                    <Button variant="warning" size="sm">Delete User</Button>
-
-                    <Button variant="primary" type="submit"> Submit </Button>
-                </Form>
-
+                <div>
+                    <Card border="dark" bg="success" style={{ width: '60rem' }}>
+                        {/* <Card.Img variant="top" src={cyclelogo2} /> */}
+                        <Card.Body>
+                            <Card.Title>All About Me</Card.Title>
+                        </Card.Body>
+                        <ListGroup variant="flush" className="list-group-flush">
+                            <ListGroupItem variant="success">Users Username here</ListGroupItem>
+                            <br />
+                            <ListGroupItem variant="success">Users Email here</ListGroupItem>
+                            <br />
+                            <ListGroupItem variant="success">Users Registered group here</ListGroupItem>
+                            <br />
+                            <ListGroupItem>
+                                <Card bg="success" style={{ width: '12rem' }}>
+                                    <ListGroup variant="flush">
+                                        <Button variant="danger" onClick="" >Delete Account</Button>
+                                    </ListGroup>
+                                </Card>
+                            </ListGroupItem>
+                        </ListGroup>
+                    </Card>
+                    <hr />
+                    <Form>
+                        <div className="mb-3">
+                            <Form.File id="formcheck-api-custom" custom>
+                                <Form.File.Input isValid />
+                                <Form.File.Label data-browse="Button text">
+                                    Update Profile Icon
+                                            </Form.File.Label>
+                                <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback>
+                            </Form.File>
+                        </div>
+                        <div className="mb-3">
+                            <Form.File id="formcheck-api-regular">
+                                <Form.File.Label>Upload Desired Image</Form.File.Label>
+                                <Form.File.Input />
+                            </Form.File>
+                        </div>
+                    </Form>
+                </div>
 
             )}
         </Popup>
