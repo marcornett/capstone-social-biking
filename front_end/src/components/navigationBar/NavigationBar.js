@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Col, Image, Nav, Navbar } from 'react-bootstrap';
 import cyclelogo3 from "../assets/cyclelogo2.png"
-import { SignIn } from '../sign-in'
-import { Register } from '../register'
-import SetProfileIcon from '../profile-Icon/ProfileIcon'
+import { SignInContainer } from '../sign-in'
+import  {RegisterContainer}  from '../register'
+import  SetProfileIconContainer  from '../profile-Icon/ProfileIcon'
 import './NavigationBar.css';
 import { LocateUserPosition } from '../../utils/index'
 
@@ -23,9 +23,9 @@ export const NavigationBar = () => {
           </Nav>
           <Form inline>
             <Nav.Link className="nav-links" href="/">Home</Nav.Link>
-            <SignIn />
-            <Register />
-            <SetProfileIcon />
+            <SignInContainer />
+            <RegisterContainer />
+            <SetProfileIconContainer />
 
           </Form>
         </Navbar.Collapse>

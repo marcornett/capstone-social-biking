@@ -5,10 +5,10 @@ export const LOGIN_SUCCESS = "AUTH/LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "AUTH/LOGIN_FAILURE";
 export const LOGOUT = "AUTH/LOGOUT";
 
-export const login = (credentials) => async (dispatch, getState) => {
+export const login = (username, password) => async (dispatch, getState) => {
   try {
     dispatch({ type: LOGIN });
-    const payload = await api.login(credentials);
+    const payload = await api.login(username, password);
     dispatch({type: LOGIN_SUCCESS, payload });
   } catch (err) {
     dispatch({

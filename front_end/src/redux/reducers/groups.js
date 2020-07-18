@@ -1,7 +1,10 @@
 import{
   GET_GROUP_DATA,
   GET_GROUP_DATA_SUCCESS,
-  GET_GROUP_DATA_FAILURE
+  GET_GROUP_DATA_FAILURE,
+  GET_ALL_GROUPS,
+  GET_ALL_GROUPS_SUCCESS,
+  GET_ALL_GROUPS_FAILURE
 } from '../actions'
 
 const INITIAL_STATE={
@@ -10,7 +13,8 @@ const INITIAL_STATE={
   about: "",
   image: {},
   eventList: [],
-  error:""
+  error:"",
+  groups:[]
 }
 
 export const groupReducer = (state=INITIAL_STATE,action)=>{
@@ -33,6 +37,23 @@ export const groupReducer = (state=INITIAL_STATE,action)=>{
         ...INITIAL_STATE,
         error:action.payload,
       }
+
+
+
+      case GET_ALL_GROUPS:
+        return{
+          ...INITIAL_STATE,
+        }
+      case GET_ALL_GROUPS_SUCCESS:
+        return{
+          ...INITIAL_STATE,
+              groups:action.payload.groups
+        }
+      case GET_ALL_GROUPS_FAILURE:
+        return{
+          ...INITIAL_STATE,
+          error:action.payload,
+        }
     default:
       return state
   }

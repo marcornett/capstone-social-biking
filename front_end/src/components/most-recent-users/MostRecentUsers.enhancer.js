@@ -1,13 +1,14 @@
 import { connect } from "react-redux";
-import{getAllGroups} from "../../redux/actions/groups"
+import { getUsers } from "../../redux/actions/user"
 
-// need to add a reducer
+
 const mapStateToProps = (state) => ({
-  groups:state.group.groups
+  users:state.allUsers.users,
+ 
 });
 
 const mapDispatchToProps = {
-  getAllGroups
+  getUsers
 };
 
 export const enhancer = connect(mapStateToProps, mapDispatchToProps);
