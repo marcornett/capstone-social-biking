@@ -4,6 +4,10 @@ export const GET_USER = "USERS/GET_USER"
 export const GET_USER_SUCCESS = "USERS/GET_USER_SUCCESS"
 export const GET_USER_FAILURE = "USERS/GET_USER_FAILURE"
 
+export const GET_USERS = "USERS/GET_USERS"
+export const GET_USERS_SUCCESS = "USERS/GET_USERS_SUCCESS"
+export const GET_USERS_FAILURE = "USERS/GET_USERS_FAILURE"
+
 export const REGISTER_USER = "USERS/REGISTER_USER"
 export const REGISTER_USER_SUCCESS = "USERS/REGISTER_USER_SUCCESS"
 export const REGISTER_USER_FAILURE = "USERS/REGISTER_USER_FAILURE"
@@ -25,6 +29,20 @@ export const getUser = (username, token) => async (dispatch, getState) => {
   } catch (err) {
     dispatch({
       type: GET_USER_FAILURE,
+      payload: err.message,
+    });
+  }
+};
+
+export const getUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: GET_USERS });
+    const payload = await api.getUsers();
+
+    dispatch({ type: GET_USERS_SUCCESS, payload });
+  } catch (err) {
+    dispatch({
+      type: GET_USERS_FAILURE,
       payload: err.message,
     });
   }
