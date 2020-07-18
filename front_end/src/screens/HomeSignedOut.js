@@ -4,7 +4,6 @@ import './Home.css'
 import { NavigationBar } from "../components/navigationBar"
 import { FooterPage } from "../components/footer"
 
-
 export const HomeSignedOut = () => (
     <div className="home">
         <NavigationBar />
