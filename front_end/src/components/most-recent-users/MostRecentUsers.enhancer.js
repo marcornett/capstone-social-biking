@@ -1,14 +1,14 @@
 import { connect } from "react-redux";
-import { getUser } from "../../redux/actions/user"
+import { getUsers } from "../../redux/actions/user"
 
 
 const mapStateToProps = (state) => ({
-  username:state.user.username,
-  image:state.user.image
+  users:state.allUsers.users,
+ 
 });
 
 const mapDispatchToProps = {
-  getUser
+  getUsers
 };
 
 export const enhancer = connect(mapStateToProps, mapDispatchToProps);
