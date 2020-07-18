@@ -33,8 +33,7 @@ export const getUser = (credentials) => async (dispatch, getState) => {
 export const registerUser = (credentials) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
-    // look up api path
-      // const payload = await api.(credentials);
+      const payload = await api.registerUser(credentials);
 
     dispatch({ type: GET_USER_SUCCESS, payload });
   } catch (err) {
