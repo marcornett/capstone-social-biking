@@ -9,6 +9,9 @@ import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import "./ProfileIcon.css";
+import Popup from 'reactjs-popup'
+import { Form, Button, } from 'react-bootstrap'
+import cyclelogo2 from "../assets/cyclelogo2.png"
 
 
 const SetProfileIcon = ({
@@ -31,7 +34,79 @@ const SetProfileIcon = ({
     //     console.log(photo);
     // };
 
+    // TODO: need to add things that user can change so change up form to make sense for profile icon
+    //TODO: email, username, groups, put image button, delete image button, delete user button
     return (
+        <Popup id="popup" trigger={<Container>
+            <Row>
+                <Col xs={3} md={2}>
+                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
+                </Col>
+            </Row>
+        </Container>} modal>
+            {close => (
+                //TODO: onSubmit function needed here
+                <Form id="form" onSubmit="">
+                    <Col className="form-logo" xs={6} md={4}>
+                        <Image src={cyclelogo2} alt="logo" />
+                    </Col>
+
+                    <fieldset>
+                        <Form.Group as={Row}>
+                            <Form.Label as="legend" column sm={2}>
+                                Update Group
+                            </Form.Label>
+                            <Col sm={10}>
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 1"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios1"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 2"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios2"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 3"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios3"
+                                />
+                                <Form.Check
+                                    type="radio"
+                                    label="group name 1 4"
+                                    name="formHorizontalRadios"
+                                    id="formHorizontalRadios3"
+                                />
+                            </Col>
+                        </Form.Group>
+                    </fieldset>
+
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email address</Form.Label>
+                        <Form.Control required type="email" placeholder="Enter email" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                </Form.Text>
+                    </Form.Group>
+
+
+                    <Form.Group controlId="formBasicUsername">
+                        <Form.Label>Update Username</Form.Label>
+                        <Form.Control required type="text" placeholder="Enter New Username" />
+                    </Form.Group>
+
+                    <Button variant="warning" size="sm">Delete User</Button>
+
+                    <Button variant="primary" type="submit"> Submit </Button>
+                </Form>
+
+
+            )}
+        </Popup>
         // <div className="container">
         //     <div className="user-name">
         //         <b>Username</b>
@@ -68,14 +143,9 @@ const SetProfileIcon = ({
         //         </p>
         //     </form>
 
-        <Container>
-            <Row>
-                <Col xs={3} md={2}>
-                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
-                </Col>
-            </Row>
-        </Container>
+
         // </div>
+
 
 
     );
