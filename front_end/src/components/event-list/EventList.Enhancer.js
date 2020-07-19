@@ -3,7 +3,7 @@ import { groupData } from "../../redux/actions/groups"
 
 
 const mapStateToProps = (state) => ({
- eventList: state.group.eventList
+  eventList: state.group.eventList,
 });
 
 const mapDispatchToProps = {
