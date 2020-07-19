@@ -6,7 +6,6 @@ import{ allUserReducer }from "./allUsers"
 // import reducers
 
 export default combineReducers({
-    // add reducers
     auth: authReducer,
     user: userReducer,
     group: groupReducer,

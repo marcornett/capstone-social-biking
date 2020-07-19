@@ -19,10 +19,6 @@ export const Register = () => {
         isSubmitted: false
     })
 
-    useEffect(() => {
-
-    }, [])
-
     const handleLogin = (event) => {
         // May have to prevent the default depending on how this loads
         // event.preventDefault()
@@ -36,10 +32,10 @@ export const Register = () => {
                 <Form id="form" onSubmit={handleLogin}>
 
                     <Col className="form-logo" xs={6} md={4}>
-                    <Image  src={cyclelogo2} alt="logo"  />
-                  </Col>
-                  <Form.Label ><h4>Register</h4></Form.Label>
+                        <Image src={cyclelogo2} alt="logo" />
+                    </Col>
                     <Form.Group controlId="formBasicEmail">
+                        <Form.Label className="form-table">Email address</Form.Label>
                         <Form.Control required type="email" placeholder="Enter email" />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
@@ -47,17 +43,17 @@ export const Register = () => {
                     </Form.Group>
 
                     <Form.Group controlId="validationCustomUsername">
-                   {/* <Form.Label className="form-table"> Display Name</Form.Label>*/}
+                        <Form.Label className="form-table"> Display Name</Form.Label>
                         <Form.Control required type="text" placeholder="Display Name" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                   {/* <Form.Label className="form-table">Password</Form.Label>*/}
+                        <Form.Label className="form-table">Password</Form.Label>
                         <Form.Control required type="password" placeholder="Password" />
                     </Form.Group>
 
                     <Form.Group controlId="formBasicPassword">
-                   {/* <Form.Label className="form-table">Confirm Password</Form.Label>*/}
+                        <Form.Label className="form-table">Confirm Password</Form.Label>
                         <Form.Control required type="password" placeholder="Confirm Password" />
                     </Form.Group>
                     <Form.Group controlId="formBasicCheckbox">
