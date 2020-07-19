@@ -8,7 +8,7 @@ export const GET_ALL_GROUPS = "GROUPS/GET_ALL_GROUPS"
 export const GET_ALL_GROUPS_SUCCESS = "GROUPS/GET_ALL_GROUPS_SUCCESS"
 export const GET_ALL_GROUPS_FAILURE = "GROUPS/GET_ALL_GROUPS_FAILURE"
 
-export const groupData= (groupName) => async (dispatch, getState) => {
+export const groupData = (groupName) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_GROUP_DATA });
     const payload = await api.getGroup(groupName);
@@ -22,7 +22,7 @@ export const groupData= (groupName) => async (dispatch, getState) => {
   }
 };
 
-export const getAllGroups= () => async (dispatch, getState) => {
+export const getAllGroups = () => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_ALL_GROUPS });
     const payload = await api.getGroups();

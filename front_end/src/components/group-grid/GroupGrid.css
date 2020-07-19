@@ -5,6 +5,7 @@
 #groupContent h5 {
   margin-left: 20px;
   margin-bottom: -5px;
+  margin-top: 20px;
 }
 
 #grid {
@@ -13,20 +14,32 @@
   flex-wrap: wrap;
 }
 
-.column {
+.groupLink {
   flex-basis: 30%;
   margin-right: 20px;
 }
 
-.column img {
+.groupLink img {
   width: 100%;
   margin-top: 20px;
   border-radius: 4px;
+  height: 200px;
   border: gray 1px solid;
 }
 
+#groupTitle {
+  margin-top: 10px;
+}
+
 @media screen and (max-width: 800px) {
-  .column {
+  .groupLink {
     flex-basis: 80%;
+  }
+  .groupLink img {
+    height: 75%;
+  }
+
+  #groupTitle {
+    font-size: 30px;
   }
 }
