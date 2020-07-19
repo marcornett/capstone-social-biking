@@ -118,11 +118,32 @@ app.get('/api/users/:username', async (req, res) => {
 
 // Add user picture
 app.put("/api/users/:username/picture", async (req, res) => {
-    // Update user image
     try {
         await UserModel.findOneAndUpdate(
             { username: req.params.username },
             { image: req.body.image },
+            { new: true },
+            (err, user) => {
+                if (err) {
+                    res.status(500).send("Internal Server Error")
+                }
+                res.send(user)
+            }
+        )
+    } catch (err) {
+        res.status(500).send("Internal Server Error")
+    }
+})
+
+// Add group to user list
+app.put("/api/users/:username", async (req, res) => {
+    console.log(req.params.username)
+    console.log(req.body)
+    try {
+        await UserModel.findOneAndUpdate(
+            { username: req.params.username },
+            // TODO: This pushes twice, should push once
+            { $push: { groups: req.body.group } },
             { new: true },
             (err, user) => {
                 if (err) {

@@ -25,7 +25,6 @@ export const groupReducer = (state = INITIAL_STATE, action) => {
       }
     case GET_GROUP_DATA_SUCCESS:
       const payload = action.payload[0]
-      console.log(payload)
       return {
         ...INITIAL_STATE,
         groupName: payload.groupName,
