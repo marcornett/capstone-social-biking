@@ -193,7 +193,6 @@ app.get("/api/groups/:groupName", async (req, res) => {
 })
 
 // Make group
-// TODO: This works but may not be needed
 app.post("/api/groups", async (req, res) => {
     const {
         groupName,

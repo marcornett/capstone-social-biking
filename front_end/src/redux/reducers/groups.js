@@ -1,4 +1,4 @@
-import{
+import {
   GET_GROUP_DATA,
   GET_GROUP_DATA_SUCCESS,
   GET_GROUP_DATA_FAILURE,
@@ -7,50 +7,53 @@ import{
   GET_ALL_GROUPS_FAILURE,
 } from '../actions'
 
-const INITIAL_STATE={
-  groupName:"",
+const INITIAL_STATE = {
+  groupName: "",
   location: "",
   about: "",
   image: {},
   eventList: [],
-  error:"",
-  groups:[]
+  error: "",
+  groups: []
 }
 
-export const groupReducer = (state=INITIAL_STATE,action)=>{
-  switch(action.type){
+export const groupReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
     case GET_GROUP_DATA:
-      return{
+      return {
         ...INITIAL_STATE,
       }
     case GET_GROUP_DATA_SUCCESS:
-      return{
+      return {
         ...INITIAL_STATE,
-        groupName: action.payload.group.groupName,
-        location: action.payload.group.location,
-        about: action.payload.group.about,
-        image: action.payload.group.image,
-        eventList: action.payload.group.eventList
+        groupName: action.payload.groupName,
+        location: action.payload.location,
+        about: action.payload.about,
+        image: action.payload.image,
+        eventList: action.payload.eventList
       }
     case GET_GROUP_DATA_FAILURE:
-      return{
+      return {
         ...INITIAL_STATE,
-        error:action.payload,
+        error: action.payload,
       }
-      case GET_ALL_GROUPS:
-        return{
-          ...INITIAL_STATE,
-        }
-      case GET_ALL_GROUPS_SUCCESS:
-        return{
-          ...INITIAL_STATE,
-              groups:action.payload.groups
-        }
-      case GET_ALL_GROUPS_FAILURE:
-        return{
-          ...INITIAL_STATE,
-          error:action.payload,
-        }
+
+
+
+    case GET_ALL_GROUPS:
+      return {
+        ...INITIAL_STATE,
+      }
+    case GET_ALL_GROUPS_SUCCESS:
+      return {
+        ...INITIAL_STATE,
+        groups: action.payload
+      }
+    case GET_ALL_GROUPS_FAILURE:
+      return {
+        ...INITIAL_STATE,
+        error: action.payload,
+      }
     default:
       return state
   }

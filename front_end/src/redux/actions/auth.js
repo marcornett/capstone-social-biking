@@ -9,7 +9,7 @@ export const login = (username, password) => async (dispatch, getState) => {
   try {
     dispatch({ type: LOGIN });
     const payload = await api.login(username, password);
-    dispatch({type: LOGIN_SUCCESS, payload });
+    dispatch({ type: LOGIN_SUCCESS, payload });
   } catch (err) {
     dispatch({
       type: LOGIN_FAILURE,
