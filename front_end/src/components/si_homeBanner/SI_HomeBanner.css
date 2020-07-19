@@ -1,0 +1,40 @@
+
+
+.card-cont{
+  display: flex;
+  flex-wrap: wrap;
+  margin:auto;
+  justify-content:center;
+  display: flex;
+  
+}
+
+.v-bg-btn{
+  width: 100%;
+}
+.si-banner{
+  background: url("../assets/bracket.jpg") no-repeat center/cover;
+  color: #fff;
+  width:100%;
+
+  
+}
+
+.si-banner-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding: 150px;
+  /*Overlay**/
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.l-heading{
+  font-weight: bold;
+  font-size: 4rem;
+}

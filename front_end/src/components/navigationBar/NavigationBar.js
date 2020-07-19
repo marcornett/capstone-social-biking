@@ -12,7 +12,7 @@ export const NavigationBar = () => {
   LocateUserPosition()
   return (
     <React.Fragment>
-      <Navbar className="nav-bar" expand="lg">
+      <Navbar sticky="top" className="nav-bar" expand="lg">
         <Col xs={6} md={4}>
           <Image src={cyclelogo3} alt="logo" />
         </Col>
