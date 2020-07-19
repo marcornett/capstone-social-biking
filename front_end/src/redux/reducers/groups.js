@@ -4,7 +4,7 @@ import {
   GET_GROUP_DATA_FAILURE,
   GET_ALL_GROUPS,
   GET_ALL_GROUPS_SUCCESS,
-  GET_ALL_GROUPS_FAILURE
+  GET_ALL_GROUPS_FAILURE,
 } from '../actions'
 
 const INITIAL_STATE = {
@@ -24,13 +24,14 @@ export const groupReducer = (state = INITIAL_STATE, action) => {
         ...INITIAL_STATE,
       }
     case GET_GROUP_DATA_SUCCESS:
+      const payload = action.payload[0]
       return {
         ...INITIAL_STATE,
-        groupName: action.payload.groupName,
-        location: action.payload.location,
-        about: action.payload.about,
-        image: action.payload.image,
-        eventList: action.payload.eventList
+        groupName: payload.groupName,
+        location: payload.location,
+        about: payload.about,
+        image: payload.image,
+        eventList: payload.eventList
       }
     case GET_GROUP_DATA_FAILURE:
       return {

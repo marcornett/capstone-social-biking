@@ -7,16 +7,13 @@ class api {
     // This may not get used
     async getUsers() {
         try {
-            await fetch(`${baseUrl}/users`, {
+            const response = await fetch(`${baseUrl}/users`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-                .then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            return response
         } catch (err) {
             return err
         }
@@ -26,16 +23,14 @@ class api {
     async registerUser({ username, password, email, image }) {
         const user = { username, password, email, image }
         try {
-            await fetch(`${baseUrl}/users/register`, {
+            const response = await fetch(`${baseUrl}/users/register`, {
                 method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            })
+            return response()
         } catch (err) {
             return err;
         }
@@ -44,16 +39,14 @@ class api {
     async login({ username, password }) {
         const user = { username, password }
         try {
-            await fetch(`${baseUrl}/auth/login`, {
+            const response = await fetch(`${baseUrl}/auth/login`, {
                 method: 'POST',
                 body: JSON.stringify(user),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            })
+            response.json()
         } catch (err) {
             return err;
         }
@@ -62,20 +55,13 @@ class api {
     // TODO
     async logout() {
         try {
-            await fetch.get(`${baseUrl}/auth/logout`, {
+            const response = await fetch.get(`${baseUrl}/auth/logout`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-                .then(response => {
-                    response.json()
-                    // TODO Get something back
-                    console.log("json", response)
-                })
-                .then(data => {
-                    console.log("hello", data)
-                })
+            response.json()
         } catch (err) {
             return err;
         }
@@ -84,16 +70,13 @@ class api {
     // Working
     async getUserInfo(username, token) {
         try {
-            await fetch(`${baseUrl}/users/${username}`, {
+            const response = await fetch(`${baseUrl}/users/${username}`, {
                 method: 'GET',
                 headers: {
                     'Authorization': `${token}`
                 }
             })
-                .then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            return response.json()
         } catch (err) {
             return err;
         }
@@ -102,17 +85,29 @@ class api {
     // Working
     async putUserImage(username, formData) {
         try {
-            await fetch(`${baseUrl}/users/${username}/picture`, {
+            const response = await fetch(`${baseUrl}/users/${username}/picture`, {
                 method: 'PUT',
                 body: JSON.stringify({ image: formData }),
                 headers: {
                     'Content-Type': 'application/json'
                 }
             })
-                .then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            return response.json()
+        } catch (err) {
+            return err
+        }
+    }
+
+    async putUserEvent(username, groupName) {
+        try {
+            const response = await fetch(`${baseUrl}/users/${username}`, {
+                method: 'PUT',
+                body: JSON.stringify({ group: groupName }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return response.json()
         } catch (err) {
             return err
         }
@@ -121,14 +116,10 @@ class api {
     // Working
     async deleteUser(username) {
         try {
-            fetch(`${baseUrl}/users/${username}`, {
+            const response = fetch(`${baseUrl}/users/${username}`, {
                 method: 'DELETE',
             })
-                .then(response => response.json())
-                .then(data => {
-                    return data
-
-                })
+            return response.json()
         } catch (err) {
             return err
         }
@@ -149,13 +140,10 @@ class api {
     // Working
     async getGroup(groupName) {
         try {
-            fetch(`${baseUrl}/groups/${groupName}`, {
+            const response = await fetch(`${baseUrl}/groups/${groupName}`, {
                 method: 'GET',
             })
-                .then(response => response.json())
-                .then(data => {
-                    return data
-                })
+            return response.json()
         } catch (err) {
             return err
         }
@@ -165,17 +153,14 @@ class api {
     async makeGroup({ groupName, location, image, about, eventList }) {
         const group = { groupName, location, image, about, eventList }
         try {
-            await fetch(`${baseUrl}/groups`, {
+            const response = await fetch(`${baseUrl}/groups`, {
                 method: 'POST',
                 body: JSON.stringify(group),
                 headers: {
                     'Content-Type': 'application/json'
                 }
-            }).then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    return data
-                })
+            })
+            return response.json()
         } catch (err) {
             return err;
         }

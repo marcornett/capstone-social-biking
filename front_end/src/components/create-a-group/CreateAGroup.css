@@ -3,11 +3,9 @@
   margin-top: 60px;
   margin-bottom: 60px;
   width: 50%;
+  align-content: center;
 }
 
-input#formBasicEmail.form-control {
-  margin-top: 5px;
-}
 #logo {
   text-align: center;
   padding-bottom: 30px;
@@ -22,8 +20,4 @@ button.btn:hover{
 outline: none;
 border: none;
 font-weight: bolder;
-outline: none;
-border: none;
 }
-
-
