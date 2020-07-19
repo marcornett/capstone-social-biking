@@ -1,16 +1,17 @@
 import React from 'react'
-import { Row, Container, Col, Card, Image, Button } from 'react-bootstrap'
+import { Row, Container, Col, Card, Image, Button,Jumbotron } from 'react-bootstrap'
 import './NSI_HomeBanner.css'
 
 export const NSIHomeBanner = () => {
     return (
-        <div>
-            <div className= "nsi-banner">
-            <div className="nsi-content">
-            <div className="nsi-join"><h1><span className="jbg-text">Join Biking groups</span></h1> <br></br> <div><h1><span className="jbg-text-2">in you area</span></h1></div>
+        <React.Fragment>
+        <div className="nsi-banner">
+       
+        <div className="nsi-banner-content">
+            <div className="nsi-join"><h1><span className="jbg-text">Join Biking groups</span></h1> <div><h1><span className="jbg-text-2">in you area</span></h1></div>
 
             <div>
-            <Button variant="primary">Join</Button>
+            <Button className="bg-btn" variant="primary">Join</Button>
             </div>
             </div>
             {/*<div className="nsi-banner-pic">
@@ -18,12 +19,11 @@ export const NSIHomeBanner = () => {
             </div>*/}
             </div>
                     
-                    <hr />   
-                </div>
+                  
+                
+            
             </div>
-
-  
-
+      </React.Fragment>
     )
 
 }
