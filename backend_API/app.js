@@ -45,7 +45,7 @@ app.post("/api/users/register", async (req, res) => {
         email,
         image
     } = req.body
-    console.log(req.body)
+
     const hash = await bycrpt.hash(password, 8)
 
     try {
@@ -78,6 +78,7 @@ app.post("/api/users/register", async (req, res) => {
 // Login
 app.post('/api/auth/login', async (req, res, next) => {
     const { username, password } = req.body
+    console.log(req.body)
 
     await UserModel.findOne({ username }, async (err, user) => {
         // Hashed password

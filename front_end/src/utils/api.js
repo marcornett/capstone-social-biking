@@ -36,7 +36,7 @@ class api {
         }
     }
 
-    async login({ username, password }) {
+    async login(username, password) {
         const user = { username, password }
         try {
             const response = await fetch(`${baseUrl}/auth/login`, {

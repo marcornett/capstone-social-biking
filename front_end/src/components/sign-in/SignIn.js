@@ -20,9 +20,6 @@ export const SignIn = ({ login, token, user }) => {
             userSignIn.username,
             userSignIn.password
         )
-        if (token) {
-            setState(!userSignIn.authenticated)
-        }
     }
 
     const handleChange = (event) => {
@@ -67,7 +64,8 @@ export const SignIn = ({ login, token, user }) => {
                     <Button variant="primary" type="submit" >
                         Submit
                         </Button>
-                    {userSignIn.authenticated ? <Redirect to={`/${userSignIn.username}`} /> : null}
+                    {token ? console.log("token", token) : console.log("no token")}
+                    {token ? <Redirect to={`/${userSignIn.username}`} /> : null}
                 </Form>
 
 
