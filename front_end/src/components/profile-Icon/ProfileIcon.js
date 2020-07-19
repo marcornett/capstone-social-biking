@@ -31,7 +31,7 @@ const SetProfileIcon = ({
     uploadUserImage,
     deleteUser
 }) => {
-      
+      const user={}
     // const [photo, setPhoto] = useState(null);
 
     // const onProfileIconChange = (event) => {
@@ -82,7 +82,9 @@ const SetProfileIcon = ({
                             <ListGroupItem>
                                 <Card bg="success" style={{ width: '12rem' }}>
                                     <ListGroup variant="flush">
-                                        <Button variant="danger" onClick={deleteUser(username)} >Delete Account</Button>
+                                        <Button variant="danger" 
+                                        // onClick={deleteUser(username)}
+                                         >Delete Account</Button>
                                     </ListGroup>
                                 </Card>
                             </ListGroupItem>
@@ -103,7 +105,9 @@ const SetProfileIcon = ({
                             <Form.File id="formcheck-api-regular">
                                 <Form.File.Label>Upload Desired Image</Form.File.Label>
                                 <Form.File.Input />
-                                <Button variant="danger" onClick={uploadUserImage(username)} >Upload Image</Button>
+                                <Button variant="danger" 
+                                // onClick={uploadUserImage(username)} 
+                                >Upload Image</Button>
                             </Form.File>
                         </div>
                     </Form>
