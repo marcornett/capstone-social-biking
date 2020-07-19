@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './GroupGrid.css'
-import api from '../../utils/api'
 
 export const GroupGrid = ({ groups, getAllGroups }) => {
     useEffect(() => {

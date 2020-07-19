@@ -2,13 +2,16 @@ import React from 'react';
 import { Form, Col, Image, Nav, Navbar } from 'react-bootstrap';
 import cyclelogo3 from "../assets/cyclelogo2.png"
 import { SignInContainer } from '../sign-in'
-import  {RegisterContainer}  from '../register'
-import  SetProfileIconContainer  from '../profile-Icon/ProfileIcon'
+import { RegisterContainer } from '../register'
+import SetProfileIconContainer from '../profile-Icon/ProfileIcon'
+import { useParams } from 'react-router-dom'
 import './NavigationBar.css';
 import { LocateUserPosition } from '../../utils/index'
 
 
 export const NavigationBar = () => {
+  const { username } = useParams()
+
   LocateUserPosition()
   return (
     <React.Fragment>
@@ -23,9 +26,9 @@ export const NavigationBar = () => {
           </Nav>
           <Form inline>
             <Nav.Link className="nav-links" href="/">Home</Nav.Link>
-            <SignInContainer />
-            <RegisterContainer />
-            <SetProfileIconContainer />
+            {username ? null : <SignInContainer />}
+            {username ? null : <RegisterContainer />}
+            {username ? <SetProfileIconContainer /> : null}
 
           </Form>
         </Navbar.Collapse>

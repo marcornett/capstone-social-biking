@@ -6,6 +6,7 @@ export const LOGIN_FAILURE = "AUTH/LOGIN_FAILURE";
 export const LOGOUT = "AUTH/LOGOUT";
 
 export const login = (username, password) => async (dispatch, getState) => {
+  console.log(username, password)
   try {
     dispatch({ type: LOGIN });
     const payload = await api.login(username, password);

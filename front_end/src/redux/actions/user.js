@@ -48,10 +48,10 @@ export const getUsers = () => async (dispatch, getState) => {
   }
 };
 
-export const registerUser = (username, password, email, image) => async (dispatch, getState) => {
+export const registerUser = ({ username, password, email, image }) => async (dispatch, getState) => {
   try {
     dispatch({ type: GET_USER });
-      const payload = await api.registerUser(username, password, email, image);
+    const payload = await api.registerUser({ username, password, email, image });
 
     dispatch({ type: GET_USER_SUCCESS, payload });
   } catch (err) {

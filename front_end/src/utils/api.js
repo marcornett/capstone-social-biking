@@ -13,7 +13,7 @@ class api {
                     'Content-Type': 'application/json'
                 }
             })
-            return response
+            return response.json()
         } catch (err) {
             return err
         }
@@ -30,7 +30,7 @@ class api {
                     'Content-Type': 'application/json'
                 }
             })
-            return response()
+            return await response.json()
         } catch (err) {
             return err;
         }

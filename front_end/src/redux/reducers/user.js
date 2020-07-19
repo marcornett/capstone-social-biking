@@ -17,7 +17,9 @@ const INITIAL_STATE = {
   email: "",
   groups: [],
   image: {},
-  error: ""
+  token: false,
+  error: "",
+  payload: {}
 }
 
 export const userReducer = (state = INITIAL_STATE, action) => {
@@ -34,6 +36,7 @@ export const userReducer = (state = INITIAL_STATE, action) => {
         email: action.payload.password,
         groups: action.payload.groups,
         image: action.payload.image,
+        token: action.payload.token
       }
     case GET_USER_FAILURE:
       return {

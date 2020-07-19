@@ -1,8 +1,13 @@
 import { connect } from "react-redux";
-import { getUser }from "../../redux/actions/user"
+import { login } from "../../redux/actions/auth"
+
+const mapStateToProps = (state) => ({
+  token: state.auth.token,
+  user: state.user
+})
 
 const mapDispatchToProps = {
-  getUser
+  login
 };
 
 export const enhancer = connect(null, mapDispatchToProps);

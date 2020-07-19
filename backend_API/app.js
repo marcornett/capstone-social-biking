@@ -45,7 +45,7 @@ app.post("/api/users/register", async (req, res) => {
         email,
         image
     } = req.body
-
+    console.log(req.body)
     const hash = await bycrpt.hash(password, 8)
 
     try {
@@ -89,7 +89,7 @@ app.post('/api/auth/login', async (req, res, next) => {
                 JWT_SECRET,
                 { expiresIn: '1 days' }
             )
-            res.send({ auth: true, token: jsonToken, username })
+            res.send({ token: jsonToken, username })
         })
     })
 })
