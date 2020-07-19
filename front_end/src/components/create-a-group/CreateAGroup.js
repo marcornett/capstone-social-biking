@@ -10,7 +10,7 @@ export const CreateAGroup = () => {
         groupName: '',
         location: '',
         about:"",
-        image:{}
+        image:""
     })
 
     const handleSubmission = (event) => {
@@ -18,19 +18,19 @@ export const CreateAGroup = () => {
     }
 
     return (
-      <Popup id="popup"  trigger={<Button>Make a Group</Button>} modal>
+      <Popup id="popup"  trigger={<Button>Create a Group</Button>} modal>
       {close => (
           <Form id="form" onSubmit={handleSubmission}>
           <Col className="form-logo" xs={6} md={4}>
           <Image  src={cyclelogo2} alt="logo"  />
         </Col>
-        <Form.Label><h4>Make A Group</h4></Form.Label>
+        <Form.Label><h4>Create A Group</h4></Form.Label>
               <Form.Group controlId="formBasicGroupName">
                   <Form.Control required type="text" placeholder="Enter Group Name" />
               </Form.Group>
 
               <Form.Group controlId="formBasicLocation">
-                  <Form.Control required type="text" placeholder="Location (city ex:Indianaplis)" />
+                  <Form.Control required type="text" placeholder="Location (ex:Indianaplis)" />
               </Form.Group>
 
               <Form.Group controlId="formBasicAbout">
