@@ -31,7 +31,6 @@ const SetProfileIcon = ({
     uploadUserImage,
     deleteUser
 }) => {
-    const user = {}
     // const [photo, setPhoto] = useState(null);
 
     // const onProfileIconChange = (event) => {
