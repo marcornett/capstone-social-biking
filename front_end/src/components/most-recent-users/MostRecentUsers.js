@@ -1,6 +1,7 @@
 import React,{ useEffect } from 'react'
 import { Image } from 'react-bootstrap'
 import './MostRecentUsers.css'
+import { Loader } from "../loader/Loader"
 
 export const MostRecentUsers =({users,getUsers}) =>{
 
@@ -13,14 +14,14 @@ export const MostRecentUsers =({users,getUsers}) =>{
     <div id="userComponent">
       <div id="userHeader"><h5>New Members</h5></div>
        <div className="userCard">
-          {users.map((user,index)=>(
+       {users.length ? users.map((user,index)=>(
              <div className="user" key={index}>
-               <Image src={user.image ?user.image :
+               <Image src={user.image ? user.image :
                   "https://forevermanchester.com/wp-content/uploads/2015/02/Bike.jpeg"
-                  } alt="" roundedCircle />
+                } alt="" roundedCircle />
                <p>{user.username}</p>
                </div>
-          )).slice(-5)}
+          )).slice(-5) : <Loader />}
         </div>
     </div>
   )
