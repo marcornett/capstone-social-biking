@@ -14,7 +14,6 @@ export const EventList = ({ groupData, eventList }) => {
         <Card id="eventComponent">
             <Card.Header as="h5">Events</Card.Header>
             {eventList ? eventList.map((event, index) => {
-                console.log(index, event)
                 return (
                     <Card.Body key={index}>
                         <Card.Subtitle className="mb-2 text-muted">Date</Card.Subtitle>

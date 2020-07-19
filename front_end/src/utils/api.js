@@ -98,6 +98,21 @@ class api {
         }
     }
 
+    async putUserEvent(username, groupName) {
+        try {
+            const response = await fetch(`${baseUrl}/users/${username}`, {
+                method: 'PUT',
+                body: JSON.stringify({ group: groupName }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            return response.json()
+        } catch (err) {
+            return err
+        }
+    }
+
     // Working
     async deleteUser(username) {
         try {

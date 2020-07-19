@@ -5,7 +5,7 @@ const userSchema = Schema({
     username: String,
     password: String,
     email: String,
-    groups: [String],
+    groups: [],
     image: {
         data: Buffer,
         contentType: String

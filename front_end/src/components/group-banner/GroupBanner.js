@@ -1,33 +1,50 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import { Row, Container, Col, Card, Image, Button } from 'react-bootstrap'
+import { Loader } from '../loader'
 import './GroupBanner.css'
 
-export const GroupBanner = () => {
+import api from '../../utils/api'
+
+export const GroupBanner = ({ groupData, addToUserGroups, currentGroupName, location, about, image, user }) => {
+  const { groupName } = useParams()
+  useEffect(() => {
+    // API call to get current group info
+    // groupData(groupName.slice(1))
+  }, [])
+
+  const handleJoinGroup = (event) => {
+    // API call to add yourself to the group
+    // addToUserGroups('Testname1', groupName.slice(1))
+  }
+
   return (
     <div className="groupBanner">
-
       <Container fluid>
-
         <Row>
           <Col md={true}>
             <Card>
-              <Card.Header>Group Name</Card.Header>
+              <Card.Header>{currentGroupName ? currentGroupName : <Loader />}</Card.Header>
               <Card.Body>
                 <Card.Title>About</Card.Title>
                 <Card.Text>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In consectetur arcu enim, sed accumsan urna gravida at. Nulla semper nisi a justo auctor, at consequat dolor luctus. Aliquam sagittis massa ut tellus rutrum tincidunt ac vel arcu. Pellentesque mattis gravida mauris, id suscipit sapien sodales vitae. Vivamus porta erat sit amet semper aliquam. Vestibulum aliquet mollis ultricies.
-          </Card.Text>
+                  {about ? about : <Loader />}
+                </Card.Text>
                 <Card.Title>Location</Card.Title>
                 <Card.Text>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </Card.Text>
-                <Button className="button" variant="primary">Join</Button>
+                  {location ? location : <Loader />}
+                </Card.Text>
+                <Button
+                  className="button"
+                  variant="primary"
+                  onClick={handleJoinGroup}
+                >Join</Button>
               </Card.Body>
             </Card>
           </Col>
           <Col>
 
-            <Image src="https://thumbs.dreamstime.com/b/cyclists-bike-race-banner-style-colorful-illustration-bunch-taking-part-white-background-56476672.jpg" rounded />
+            {image.length ? <Image src={image} rounded /> : <Loader />}
 
           </Col>
         </Row>

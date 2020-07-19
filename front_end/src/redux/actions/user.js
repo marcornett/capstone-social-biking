@@ -16,6 +16,10 @@ export const USER_IMAGE_UPLOAD = "USERS/USER_IMAGE_UPLOAD";
 export const USER_IMAGE_UPLOAD_SUCCESS = "USERS/USER_IMAGE_UPLOAD_SUCCESS";
 export const USER_IMAGE_UPLOAD_FAILURE = "USERS/USER_IMAGE_UPLOAD_FAILURE";
 
+export const USER_GROUP_UPLOAD = "USERS/SER_GROUP_UPLOAD";
+export const USER_GROUP_UPLOAD_SUCCESS = "USERS/USER_GROUP_UPLOAD_SUCCESS";
+export const USER_GROUP_UPLOAD_FAILURE = "USERS/USER_GROUP_UPLOAD_FAILURE";
+
 export const DELETE_USER = "USERS/DELETE_USER"
 export const DELETE_USER_SUCCESS = "USERS/DELETE_USER_SUCCESS"
 export const DELETE_USER_FAILURE = "USERS/DELETE_USER_FAILURE"
@@ -74,6 +78,20 @@ export const uploadUserImage = (username, formData) => async (dispatch, getState
     });
   }
 };
+
+export const addToUserGroups = (username, groupName) => async (dispatch, getState) => {
+  try {
+    dispatch({ type: USER_GROUP_UPLOAD });
+    const payload = await api.putUserEvent(username, groupName);
+    dispatch({ type: USER_GROUP_UPLOAD_SUCCESS, payload });
+  } catch (err) {
+    dispatch({
+      type: USER_GROUP_UPLOAD_FAILURE,
+      payload: err.message,
+    });
+  }
+};
+
 
 export const deleteUser = (username) => async (dispatch, getState) => {
   try {

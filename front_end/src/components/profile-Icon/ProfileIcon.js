@@ -3,7 +3,7 @@ we going to allow the user to set their profile
 pic/iconand whatever image the user would like to use, 
 there is also a test image link that gives an image. *****/
 
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
@@ -14,7 +14,9 @@ import { Button } from 'react-bootstrap'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Form from 'react-bootstrap/Form'
+import { useParams } from 'react-router-dom'
 import "./ProfileIcon.css";
+import {Loader} from "../loader/Loader"
 
 
 const SetProfileIcon = ({
@@ -22,7 +24,14 @@ const SetProfileIcon = ({
     picture,
     loading,
     error,
+    image,
+    accountName,
+    email,
+    getUser,
+    uploadUserImage,
+    deleteUser
 }) => {
+      const user={}
     // const [photo, setPhoto] = useState(null);
 
     // const onProfileIconChange = (event) => {
@@ -36,12 +45,19 @@ const SetProfileIcon = ({
     //     setIcon(photo);
     //     console.log(photo);
     // };
+    const { username } = useParams()
+    useEffect(() => {
+        // API call to get data works, need to be connected to DB
+        // getUser(username)
+    }, [])
 
     return (
         <Popup id="popup" trigger={<Container>
             <Row>
                 <Col xs={3} md={2}>
-                    <Image className="profile-icon" src="https://picsum.photos/171/180" roundedCircle />
+                    {user.image ?
+                    <Image className="profile-icon" src={user.image} roundedCircle />
+                    : <Image src="https://picsum.photos/171/180" roundedCircle /> }
                 </Col>
             </Row>
         </Container>} modal>
@@ -53,16 +69,22 @@ const SetProfileIcon = ({
                             <Card.Title>All About Me</Card.Title>
                         </Card.Body>
                         <ListGroup variant="flush" className="list-group-flush">
-                            <ListGroupItem variant="success">Users Username here</ListGroupItem>
+                           {user.username ? 
+                             <ListGroupItem variant="success">Username:{user.accountName}</ListGroupItem> 
+                                : <Loader/>}
                             <br />
-                            <ListGroupItem variant="success">Users Email here</ListGroupItem>
+                            {user.email?
+                            <ListGroupItem variant="success">Email:{user.email}</ListGroupItem>
+                            : <Loader/>}
                             <br />
-                            <ListGroupItem variant="success">Users Registered group here</ListGroupItem>
-                            <br />
+                            {/* <ListGroupItem variant="success">My groups:{testUser.groups}</ListGroupItem>
+                            <br /> */}
                             <ListGroupItem>
                                 <Card bg="success" style={{ width: '12rem' }}>
                                     <ListGroup variant="flush">
-                                        <Button variant="danger" onClick="" >Delete Account</Button>
+                                        <Button variant="danger" 
+                                        // onClick={deleteUser(username)}
+                                         >Delete Account</Button>
                                     </ListGroup>
                                 </Card>
                             </ListGroupItem>
@@ -70,7 +92,7 @@ const SetProfileIcon = ({
                     </Card>
                     <hr />
                     <Form>
-                        <div className="mb-3">
+                        {/* <div className="mb-3">
                             <Form.File id="formcheck-api-custom" custom>
                                 <Form.File.Input isValid />
                                 <Form.File.Label data-browse="Button text">
@@ -78,11 +100,14 @@ const SetProfileIcon = ({
                                             </Form.File.Label>
                                 <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback>
                             </Form.File>
-                        </div>
+                        </div> */}
                         <div className="mb-3">
                             <Form.File id="formcheck-api-regular">
                                 <Form.File.Label>Upload Desired Image</Form.File.Label>
                                 <Form.File.Input />
+                                <Button variant="danger" 
+                                // onClick={uploadUserImage(username)} 
+                                >Upload Image</Button>
                             </Form.File>
                         </div>
                     </Form>
