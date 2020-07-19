@@ -78,6 +78,7 @@ app.post("/api/users/register", async (req, res) => {
 // Login
 app.post('/api/auth/login', async (req, res, next) => {
     const { username, password } = req.body
+    console.log(req.body)
 
     await UserModel.findOne({ username }, async (err, user) => {
         // Hashed password
@@ -89,7 +90,7 @@ app.post('/api/auth/login', async (req, res, next) => {
                 JWT_SECRET,
                 { expiresIn: '1 days' }
             )
-            res.send({ auth: true, token: jsonToken, username })
+            res.send({ token: jsonToken, username })
         })
     })
 })

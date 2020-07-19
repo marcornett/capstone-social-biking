@@ -1,12 +1,12 @@
-import { 
-  LOGIN, 
-  LOGIN_SUCCESS, 
-  LOGIN_FAILURE, 
+import {
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
   LOGOUT
 } from "../actions";
 
 const INITIAL_STATE = {
-  isAuthenticated: false,
+  token: false,
   username: "",
   error: "",
 };
@@ -20,8 +20,8 @@ export const authReducer = (state = INITIAL_STATE, action) => {
     case LOGIN_SUCCESS:
       return {
         ...INITIAL_STATE,
-        isAuthenticated: action.payload.token,
-        username:action.payload.username,
+        token: action.payload.token,
+        username: action.payload.username,
       };
     case LOGIN_FAILURE:
       return {
