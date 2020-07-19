@@ -10,13 +10,13 @@ import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
 import Card from "react-bootstrap/Card"
 import Popup from 'reactjs-popup'
-import { Button } from 'react-bootstrap'
+import { Button, Alert } from 'react-bootstrap'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
 import ListGroup from 'react-bootstrap/ListGroup'
 import Form from 'react-bootstrap/Form'
 import { useParams } from 'react-router-dom'
 import "./ProfileIcon.css";
-import {Loader} from "../loader/Loader"
+import { Loader } from "../loader/Loader"
 
 
 const SetProfileIcon = ({
@@ -31,7 +31,7 @@ const SetProfileIcon = ({
     uploadUserImage,
     deleteUser
 }) => {
-      
+    const user = {}
     // const [photo, setPhoto] = useState(null);
 
     // const onProfileIconChange = (event) => {
@@ -45,6 +45,17 @@ const SetProfileIcon = ({
     //     setIcon(photo);
     //     console.log(photo);
     // };
+
+
+    // when ready uncomment line 53
+    const deleteConfirm = () => {
+        if (window.confirm("Are you sure you want to delete your account?")) {
+            // deleteUser(username)
+            //console.log("working")
+        }
+
+    }
+
     const { username } = useParams()
     useEffect(() => {
         // API call to get data works, need to be connected to DB
@@ -56,8 +67,8 @@ const SetProfileIcon = ({
             <Row>
                 <Col xs={3} md={2}>
                     {user.image ?
-                    <Image className="profile-icon" src={user.image} roundedCircle />
-                    : <Image src="https://picsum.photos/171/180" roundedCircle /> }
+                        <Image className="profile-icon" src={user.image} roundedCircle />
+                        : <Image src="https://picsum.photos/171/180" roundedCircle />}
                 </Col>
             </Row>
         </Container>} modal>
@@ -69,20 +80,23 @@ const SetProfileIcon = ({
                             <Card.Title>All About Me</Card.Title>
                         </Card.Body>
                         <ListGroup variant="flush" className="list-group-flush">
-                           {user.username ? 
-                             <ListGroupItem variant="success">Username:{user.accountName}</ListGroupItem> 
-                                : <Loader/>}
+                            {user.username ?
+                                <ListGroupItem variant="success">Username:{user.accountName}</ListGroupItem>
+                                : <Loader />}
                             <br />
-                            {user.email?
-                            <ListGroupItem variant="success">Email:{user.email}</ListGroupItem>
-                            : <Loader/>}
+                            {user.email ?
+                                <ListGroupItem variant="success">Email:{user.email}</ListGroupItem>
+                                : <Loader />}
                             <br />
                             {/* <ListGroupItem variant="success">My groups:{testUser.groups}</ListGroupItem>
                             <br /> */}
                             <ListGroupItem>
                                 <Card bg="success" style={{ width: '12rem' }}>
                                     <ListGroup variant="flush">
-                                        <Button variant="danger" onClick={deleteUser(username)} >Delete Account</Button>
+                                        <Button variant="danger"
+                                            onClick={deleteConfirm}
+                                        >
+                                            Delete Account</Button>
                                     </ListGroup>
                                 </Card>
                             </ListGroupItem>
@@ -103,7 +117,9 @@ const SetProfileIcon = ({
                             <Form.File id="formcheck-api-regular">
                                 <Form.File.Label>Upload Desired Image</Form.File.Label>
                                 <Form.File.Input />
-                                <Button variant="danger" onClick={uploadUserImage(username)} >Upload Image</Button>
+                                <Button variant="danger"
+                                // onClick={uploadUserImage(username)} 
+                                >Upload Image</Button>
                             </Form.File>
                         </div>
                     </Form>
