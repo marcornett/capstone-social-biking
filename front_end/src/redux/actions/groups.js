@@ -36,4 +36,19 @@ export const getAllGroups = () => async (dispatch, getState) => {
   }
 };
 
+//needs to be tested
+export const registerGroup= () => async (dispatch, getState) => {
+  try {
+    dispatch({ type: GET_GROUP_DATA });
+    //the api call still has to be made commenting out lines 46 &47 for now 
+    // const payload = await api.registerGroup();
+    // dispatch({ type: GET_GROUP_DATA_SUCCESS, payload });
+  } catch (err) {
+    dispatch({
+      type: GET_GROUP_DATA_FAILURE,
+      payload: err.message,
+    });
+  }
+};
+
 
