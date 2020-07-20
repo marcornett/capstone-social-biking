@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { getUser, uploadUserImage, deleteUser } from "../../redux/actions/user"
 
 const mapStateToProps = (state) => ({
-  image:state.user.image,
+  userImage:state.user.image,
   accountName:state.user.username,
   email:state.user.email,
 });
