@@ -7,7 +7,7 @@ export const Navigation = () => {
         <Router>
             <Switch>
                 <Route path="/group/:groupName" component={GroupPage} />
-                <Route path="/registered" component={HomeSignedIn} />
+                <Route path="/:username" component={HomeSignedIn} />
                 <Route exact path="/" component={HomeSignedOut} />
                 <Route path="*" component={NotFound} />
             </Switch>

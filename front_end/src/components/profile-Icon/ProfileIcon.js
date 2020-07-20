@@ -93,8 +93,7 @@ const SetProfileIcon = ({
                                 <Card bg="success" style={{ width: '12rem' }}>
                                     <ListGroup variant="flush">
                                         <Button variant="danger"
-                                            onClick={deleteConfirm}
-                                        >
+                                            onClick={deleteConfirm}>
                                             Delete Account</Button>
                                     </ListGroup>
                                 </Card>

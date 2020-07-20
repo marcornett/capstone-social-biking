@@ -13,7 +13,7 @@ class api {
                     'Content-Type': 'application/json'
                 }
             })
-            return response
+            return response.json()
         } catch (err) {
             return err
         }
@@ -30,13 +30,13 @@ class api {
                     'Content-Type': 'application/json'
                 }
             })
-            return response()
+            return await response.json()
         } catch (err) {
             return err;
         }
     }
 
-    async login({ username, password }) {
+    async login(username, password) {
         const user = { username, password }
         try {
             const response = await fetch(`${baseUrl}/auth/login`, {
