@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Popup from 'reactjs-popup'
 import { Form, Button, Image, Col } from 'react-bootstrap'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Redirect } from 'react-router-dom'
 import cyclelogo2 from "../assets/cyclelogo2.png"
 import './Register.css';
 
@@ -19,11 +19,11 @@ export const Register = ({ registerUser, getUser, user, token }) => {
     const handleLogin = (event) => {
         // May have to prevent the default depending on how this loads
         event.preventDefault()
-        if (userData.username) {
-            registerUser(userData)
-            getUser(user, token)
-            // setTimeout(setState({ isSubmitted: true }), 9000)
-        }
+
+        registerUser(userData)
+        getUser(userData.username, token)
+        console.log(user)
+        setTimeout(setState({ isSubmitted: true }), 9000)
     }
 
     const handleChange = (event) => {
@@ -90,14 +90,18 @@ export const Register = ({ registerUser, getUser, user, token }) => {
                         <Form.Group controlId="formBasicCheckbox">
                             {/* <Form.Check type="checkbox" label="Save Password" /> */}
                         </Form.Group>
-                        <Link to={`/${userData.username}`}>
-                            <Button variant="primary" type="submit" >
-                                Submit
+                        <Button variant="primary" type="submit" >
+                            Submit
                             </Button>
-                        </Link>
+                        {userData.isSubmitted ?
+                            <Link to={`/${user}`} >
+                                Go to sign in
+                            </Link>
+                            : null}
                     </Form>
                 )}
             </Popup>
+            {user ? <Redirect to={`/${user}`} /> : null}
         </>
     )
 }
