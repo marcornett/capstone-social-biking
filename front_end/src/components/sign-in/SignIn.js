@@ -6,7 +6,7 @@ import cyclelogo2 from "../assets/cyclelogo2.png"
 import './SignIn.css';
 
 
-export const SignIn = ({ login, token, user }) => {
+export const SignIn = ({ registerUser, getUser, user, token, login }) => {
     const [userSignIn, setState] = useState({
         username: '',
         password: '',
@@ -20,6 +20,7 @@ export const SignIn = ({ login, token, user }) => {
             userSignIn.username,
             userSignIn.password
         )
+        getUser(userSignIn.username, token)
     }
 
     const handleChange = (event) => {
@@ -64,8 +65,7 @@ export const SignIn = ({ login, token, user }) => {
                     <Button variant="primary" type="submit" >
                         Submit
                         </Button>
-                    {token ? console.log("token", token) : console.log("no token")}
-                    {token ? <Redirect to={`/${userSignIn.username}`} /> : null}
+                    {user ? <Redirect to={`/${userSignIn.username}`} /> : null}
                 </Form>
 
 

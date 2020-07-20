@@ -46,7 +46,7 @@ class api {
                     'Content-Type': 'application/json'
                 }
             })
-            response.json()
+            return await response.json()
         } catch (err) {
             return err;
         }

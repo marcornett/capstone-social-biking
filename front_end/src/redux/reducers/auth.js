@@ -8,6 +8,7 @@ import {
 const INITIAL_STATE = {
   token: false,
   username: "",
+  user: {},
   error: "",
 };
 
@@ -22,6 +23,7 @@ export const authReducer = (state = INITIAL_STATE, action) => {
         ...INITIAL_STATE,
         token: action.payload.token,
         username: action.payload.username,
+        user: action.payload.user
       };
     case LOGIN_FAILURE:
       return {
