@@ -1,7 +1,7 @@
-const baseUrl = 'https://capstone-bike-social.herokuapp.com/api'
+// const baseUrl = '/api'
 
 // TODO: This needs to be switched once pushed to Heroku
-// const baseUrl = 'http://localhost:4000/api'
+const baseUrl = 'http://localhost:4000/api'
 
 class api {
     // This may not get used
