@@ -10,12 +10,12 @@ export const GroupBanner = ({ groupData, addToUserGroups, currentGroupName, loca
   const { groupName } = useParams()
   useEffect(() => {
     // API call to get current group info
-    // groupData(groupName.slice(1))
+    groupData(groupName.slice(1))
   }, [])
 
   const handleJoinGroup = (event) => {
     // API call to add yourself to the group
-    // addToUserGroups('Testname1', groupName.slice(1))
+    addToUserGroups(groupName, groupName.slice(1))
   }
 
   return (

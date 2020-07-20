@@ -20,27 +20,26 @@ import { Loader } from "../loader/Loader"
 
 
 const SetProfileIcon = ({
-    userImage,
-    accountName,
+    username,
     email,
-    getUser,
-    uploadUserImage,
-    deleteUser
+    groups
 }) => {
-    const user ={}
-    const [picture, setImage] = useState({image: null})
+    const user = {}
+    const [picture, setImage] = useState({ image: null })
+
+    // const { username } = useParams()
 
     const onProfileIconChange = (event) => {
         const TargetFile = event.target.files;
         console.log(TargetFile);
-        setImage(()=> ({image:TargetFile[0]}));
-    }; 
+        setImage(() => ({ image: TargetFile[0] }));
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-      const data = new FormData();
-      data.append("picture", picture.file)
-      console.log(picture);
+        const data = new FormData();
+        data.append("picture", picture.file)
+        console.log(picture);
         // uploadUserImage(username, picture);
         alert("image successfully uploaded")
     };
@@ -54,12 +53,6 @@ const SetProfileIcon = ({
         }
 
     }
-
-    const { username } = useParams()
-    useEffect(() => {
-        // API call to get data works, need to be connected to DB
-        // getUser({username})
-    }, [])
 
     return (
         <Popup id="popup" trigger={<Container>
@@ -79,13 +72,13 @@ const SetProfileIcon = ({
                             <Card.Title>All About Me</Card.Title>
                         </Card.Body>
                         <ListGroup variant="flush" className="list-group-flush">
-                            {user.username ?
-                                <ListGroupItem variant="success">Username:{user.accountName}</ListGroupItem>
-                                : <Loader />}
+                            {/* {username ? */}
+                            <ListGroupItem variant="success">Username:{username}</ListGroupItem>
+                            {/* : <Loader />} */}
                             <br />
-                            {user.email ?
-                                <ListGroupItem variant="success">Email:{user.email}</ListGroupItem>
-                                : <Loader />}
+                            {/* {email ? */}
+                            <ListGroupItem variant="success">Email:{email}</ListGroupItem>
+                            {/* : <Loader />} */}
                             <br />
                             <ListGroupItem>
                                 <Card bg="success" style={{ width: '12rem' }}>
@@ -105,7 +98,7 @@ const SetProfileIcon = ({
                                 <Form.File.Label>Upload Desired Image</Form.File.Label>
                                 <Form.File.Input onChange={onProfileIconChange} />
                                 <Button variant="danger"
-                                onClick={handleSubmit} 
+                                    onClick={handleSubmit}
                                 >Upload Image</Button>
                             </Form.File>
                         </div>
@@ -114,47 +107,6 @@ const SetProfileIcon = ({
 
             )}
         </Popup>
-        // <div className="container">
-        //     <div className="user-name">
-        //         <b>Username</b>
-        //         <i>
-        //             <b>PlaceHolder</b>
-        //         </i>
-        //     </div>
-        //     <div className="image-container">
-        //         <img
-        //             src={``}
-        //             alt="Nothing Uploaded"
-        //         />
-        //     </div>
-        //     <form className="container" onSubmit={handleSubmit}>
-        //         <div className="display-name">
-        //             <b>Display Name </b>
-        //             <div>
-        //                 <i>Could possibly be user display name</i>
-        //             </div>
-        //         </div>
-        //         <input
-        //             className="choose-photo-box"
-        //             onChange={onProfileIconChange}
-        //             name="picture"
-        //             type="file"
-        //             required
-        //             autoFocus
-        //         />
-        //         <button className="upload-button" type="submit">
-        //             Upload
-        // </button>
-        //         <p className=" photo-instructions">
-        //             Click on the Profile link in the menu to view your uploaded photo{" "}
-        //         </p>
-        //     </form>
-
-
-        // </div>
-
-
-
     );
 };
 
