@@ -12,4 +12,4 @@ const mapDispatchToProps = {
   groupData
 };
 
-export const enhancer = connect(null, mapDispatchToProps);
+export const enhancer = connect(mapStateToProps, mapDispatchToProps);
