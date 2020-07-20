@@ -3,7 +3,7 @@ we going to allow the user to set their profile
 pic/iconand whatever image the user would like to use, 
 there is also a test image link that gives an image. *****/
 
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
@@ -20,30 +20,30 @@ import { Loader } from "../loader/Loader"
 
 
 const SetProfileIcon = ({
-    setPicture: setIcon,
-    picture,
-    loading,
-    error,
-    image,
+    userImage,
     accountName,
     email,
     getUser,
     uploadUserImage,
     deleteUser
 }) => {
-    // const [photo, setPhoto] = useState(null);
+    const user ={}
+    const [picture, setImage] = useState({image: null})
 
-    // const onProfileIconChange = (event) => {
-    //     const file = event.target.files[0];
-    //     console.log(file);
-    //     setPhoto(file);
-    // }; // debugger;
+    const onProfileIconChange = (event) => {
+        const TargetFile = event.target.files;
+        console.log(TargetFile);
+        setImage(()=> ({image:TargetFile[0]}));
+    }; 
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     setIcon(photo);
-    //     console.log(photo);
-    // };
+    const handleSubmit = (event) => {
+        event.preventDefault();
+      const data = new FormData();
+      data.append("picture", picture.file)
+      console.log(picture);
+        // uploadUserImage(username, picture);
+        alert("image successfully uploaded")
+    };
 
 
     // when ready uncomment line 53
@@ -58,7 +58,7 @@ const SetProfileIcon = ({
     const { username } = useParams()
     useEffect(() => {
         // API call to get data works, need to be connected to DB
-        // getUser(username)
+        // getUser({username})
     }, [])
 
     return (
@@ -66,7 +66,7 @@ const SetProfileIcon = ({
             <Row>
                 <Col xs={3} md={2}>
                     {user.image ?
-                        <Image className="profile-icon" src={user.image} roundedCircle />
+                        <Image className="profile-icon" src={user.userImage} roundedCircle />
                         : <Image src="https://picsum.photos/171/180" roundedCircle />}
                 </Col>
             </Row>
@@ -87,8 +87,6 @@ const SetProfileIcon = ({
                                 <ListGroupItem variant="success">Email:{user.email}</ListGroupItem>
                                 : <Loader />}
                             <br />
-                            {/* <ListGroupItem variant="success">My groups:{testUser.groups}</ListGroupItem>
-                            <br /> */}
                             <ListGroupItem>
                                 <Card bg="success" style={{ width: '12rem' }}>
                                     <ListGroup variant="flush">
@@ -102,21 +100,12 @@ const SetProfileIcon = ({
                     </Card>
                     <hr />
                     <Form>
-                        {/* <div className="mb-3">
-                            <Form.File id="formcheck-api-custom" custom>
-                                <Form.File.Input isValid />
-                                <Form.File.Label data-browse="Button text">
-                                    Update Profile Icon
-                                            </Form.File.Label>
-                                <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback>
-                            </Form.File>
-                        </div> */}
                         <div className="mb-3">
                             <Form.File id="formcheck-api-regular">
                                 <Form.File.Label>Upload Desired Image</Form.File.Label>
-                                <Form.File.Input />
+                                <Form.File.Input onChange={onProfileIconChange} />
                                 <Button variant="danger"
-                                // onClick={uploadUserImage(username)} 
+                                onClick={handleSubmit} 
                                 >Upload Image</Button>
                             </Form.File>
                         </div>
