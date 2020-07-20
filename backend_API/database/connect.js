@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 
 dotenv.config()
-const URL = process.env.DB_CONNECTION
+const URL = process.env.MONGODB_URI
 
 mongoose.set('useFindAndModify', false)
 
