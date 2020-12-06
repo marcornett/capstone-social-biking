@@ -1,0 +1,23 @@
+#form {
+  margin: 30px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  width: 50%;
+  align-content: center;
+}
+
+#logo {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+button.btn.btn-link {
+  color: white;
+  border: none;
+  outline: none;
+}
+button.btn:hover{
+outline: none;
+border: none;
+font-weight: bolder;
+}

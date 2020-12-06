@@ -7,14 +7,14 @@ import * as serviceWorker from './serviceWorker';
 import { createStore } from 'redux'
 
 // Issue with configure store, no need to fix for now
-// import configureStore from './redux/configureStore'
+import configureStore from './redux/configureStore'
 
 import rootReducer from './redux/reducers'
 import { Provider } from 'react-redux'
 
 
 // const { store } = configureStore()
-const store = createStore(rootReducer)
+const store = configureStore()
 window.store = store
 
 ReactDOM.render(

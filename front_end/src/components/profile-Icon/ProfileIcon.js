@@ -3,81 +3,110 @@ we going to allow the user to set their profile
 pic/iconand whatever image the user would like to use, 
 there is also a test image link that gives an image. *****/
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from 'react-bootstrap/Image'
 import Container from 'react-bootstrap/Container'
 import Row from "react-bootstrap/Row"
 import Col from "react-bootstrap/Col"
+import Card from "react-bootstrap/Card"
+import Popup from 'reactjs-popup'
+import { Button, Alert } from 'react-bootstrap'
+import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Form from 'react-bootstrap/Form'
+import { useParams } from 'react-router-dom'
 import "./ProfileIcon.css";
+import { Loader } from "../loader/Loader"
 
 
 const SetProfileIcon = ({
-    setPicture: setIcon,
-    picture,
-    loading,
-    error,
+    username,
+    email,
+    groups
 }) => {
-    // const [photo, setPhoto] = useState(null);
+    const user = {}
+    const [picture, setImage] = useState({ image: null })
 
-    // const onProfileIconChange = (event) => {
-    //     const file = event.target.files[0];
-    //     console.log(file);
-    //     setPhoto(file);
-    // }; // debugger;
+    // const { username } = useParams()
 
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     setIcon(photo);
-    //     console.log(photo);
-    // };
+    const onProfileIconChange = (event) => {
+        const TargetFile = event.target.files;
+        console.log(TargetFile);
+        setImage(() => ({ image: TargetFile[0] }));
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const data = new FormData();
+        data.append("picture", picture.file)
+        console.log(picture);
+        // uploadUserImage(username, picture);
+        alert("image successfully uploaded")
+    };
+
+
+    // when ready uncomment line 53
+    const deleteConfirm = () => {
+        if (window.confirm("Are you sure you want to delete your account?")) {
+            // deleteUser(username)
+            //console.log("working")
+        }
+
+    }
 
     return (
-        // <div className="container">
-        //     <div className="user-name">
-        //         <b>Username</b>
-        //         <i>
-        //             <b>PlaceHolder</b>
-        //         </i>
-        //     </div>
-        //     <div className="image-container">
-        //         <img
-        //             src={``}
-        //             alt="Nothing Uploaded"
-        //         />
-        //     </div>
-        //     <form className="container" onSubmit={handleSubmit}>
-        //         <div className="display-name">
-        //             <b>Display Name </b>
-        //             <div>
-        //                 <i>Could possibly be user display name</i>
-        //             </div>
-        //         </div>
-        //         <input
-        //             className="choose-photo-box"
-        //             onChange={onProfileIconChange}
-        //             name="picture"
-        //             type="file"
-        //             required
-        //             autoFocus
-        //         />
-        //         <button className="upload-button" type="submit">
-        //             Upload
-        // </button>
-        //         <p className=" photo-instructions">
-        //             Click on the Profile link in the menu to view your uploaded photo{" "}
-        //         </p>
-        //     </form>
-
-        <Container>
+        <Popup id="popup" trigger={<Container>
             <Row>
-                <Col xs={4} md={2}>
-                    <Image src="https://picsum.photos/171/180" roundedCircle />
+                <Col xs={3} md={2}>
+                    {user.image ?
+                        <Image className="profile-icon" src={user.userImage} roundedCircle />
+                        : <Image src="https://picsum.photos/171/180" roundedCircle />}
                 </Col>
             </Row>
-        </Container>
-        // </div>
+        </Container>} modal>
+            {close => (
+                <div>
+                    <Card border="dark" bg="success" style={{ width: '60rem' }}>
+                        {/* <Card.Img variant="top" src={cyclelogo2} /> */}
+                        <Card.Body>
+                            <Card.Title>All About Me</Card.Title>
+                        </Card.Body>
+                        <ListGroup variant="flush" className="list-group-flush">
+                            {/* {username ? */}
+                            <ListGroupItem variant="success">Username:{username}</ListGroupItem>
+                            {/* : <Loader />} */}
+                            <br />
+                            {/* {email ? */}
+                            <ListGroupItem variant="success">Email:{email}</ListGroupItem>
+                            {/* : <Loader />} */}
+                            <br />
+                            <ListGroupItem>
+                                <Card bg="success" style={{ width: '12rem' }}>
+                                    <ListGroup variant="flush">
+                                        <Button variant="danger"
+                                            onClick={deleteConfirm}>
+                                            Delete Account</Button>
+                                    </ListGroup>
+                                </Card>
+                            </ListGroupItem>
+                        </ListGroup>
+                    </Card>
+                    <hr />
+                    <Form>
+                        <div className="mb-3">
+                            <Form.File id="formcheck-api-regular">
+                                <Form.File.Label>Upload Desired Image</Form.File.Label>
+                                <Form.File.Input onChange={onProfileIconChange} />
+                                <Button variant="danger"
+                                    onClick={handleSubmit}
+                                >Upload Image</Button>
+                            </Form.File>
+                        </div>
+                    </Form>
+                </div>
 
-
+            )}
+        </Popup>
     );
 };
 

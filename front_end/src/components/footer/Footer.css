@@ -1,0 +1,14 @@
+.main-footer{
+  
+  background:#5FD1BD;
+  border-top: #cccccc solid .01rem;
+  padding: 50px;
+  color: #fff;
+}
+.title{
+  color:#505050 ;
+}
+
+div.container-fluid{
+  padding-top:20px;
+}

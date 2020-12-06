@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "holder": "0.0.0",
+    "holderjs": "^2.9.7",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.1",
     "react-dom": "^16.13.1",
@@ -16,7 +18,9 @@
     "react-scripts": "3.4.1",
     "reactjs-popup": "^1.5.0",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "use-position": "0.0.7"
   },
   "scripts": {
     "start": "react-scripts start",

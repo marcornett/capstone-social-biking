@@ -1,10 +1,74 @@
 #form {
-  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
   margin-top: 60px;
   margin-bottom: 60px;
+  align-content: center;
 }
+
 
 #logo {
   text-align: center;
   padding-bottom: 30px;
 }
+div.form-logo.col-md-4.col-6{
+  display: flex;
+  margin:auto;
+  margin-bottom: 25px;
+  justify-content:center;
+  }
+  
+
+
+
+
+button.btn.btn-link{
+  margin-top: 60px;  
+  border: none;
+}
+
+button.btn.btn-link:hover {
+  color: #fbce2f;
+  text-decoration: none; 
+  border: none;
+}
+.form-table{
+  display: flex;
+  
+}
+
+input#formBasicEmail.form-control ,
+input#validationCustomUsername.form-control,
+input#formBasicPassword.form-control
+ {
+   text-align: center;
+  border: 1px solid rgba(0, 0 ,0, 0.5);
+  font-size: 1rem;
+  padding: 4px;
+  
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+input#formBasicPassword.form-control{
+  margin-top:20px;
+  
+}
+small.text-muted.form-text{
+  margin:5px auto;
+  
+}
+button.btn.btn-primary{
+  margin-top:20px;
+  background:#FA424F;
+  border:#5fd1bd 1px solid;
+}
+button.btn.btn-primary:hover{
+  margin-top:20px;
+  background:#29cb31;
+  border:#FA424F 1px solid;
+}
+
+
+
