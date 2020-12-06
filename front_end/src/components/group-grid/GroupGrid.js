@@ -29,5 +29,6 @@ export const GroupGrid = ({ groups, getAllGroups }) => {
                 }) : <Loader />}
             </section>
         </div>
+
     )
 }
